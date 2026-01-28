@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36" version="29.3.4">
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36" version="29.3.6">
   <diagram id="8scIneaxF44sLmQV-TFt" name="Page-1">
-    <mxGraphModel dx="1239" dy="724" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="1026" dy="600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -37,7 +37,7 @@
         <mxCell id="TABIEwVqIFUD81Bl_kKk-12" parent="TABIEwVqIFUD81Bl_kKk-10" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" value="" vertex="1">
           <mxGeometry height="8" width="200" y="110" as="geometry" />
         </mxCell>
-        <mxCell id="TABIEwVqIFUD81Bl_kKk-13" parent="TABIEwVqIFUD81Bl_kKk-10" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ getNrDoors(): int&lt;div&gt;+ getEnginePower(): double&lt;/div&gt;&lt;div&gt;+ getCurrentSpeed(): double&lt;/div&gt;&lt;div&gt;+ getColor(): Color&lt;/div&gt;&lt;div&gt;+ setColor(Color): void&lt;/div&gt;&lt;div&gt;+ startEngine(): void&lt;/div&gt;&lt;div&gt;+ stopEngine(): void&lt;/div&gt;&lt;div&gt;#&amp;nbsp;speedMultiplier(): double&lt;/div&gt;&lt;div&gt;+ speedFactor(): double&lt;/div&gt;&lt;div&gt;+ incrementSpeed(double): void&lt;/div&gt;&lt;div&gt;+ decrementSpeed(double): void&lt;/div&gt;&lt;div&gt;+ gas(double): void&lt;/div&gt;&lt;div&gt;+ brake(double): void&lt;/div&gt;" vertex="1">
+        <mxCell id="TABIEwVqIFUD81Bl_kKk-13" parent="TABIEwVqIFUD81Bl_kKk-10" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ getNrDoors(): int&lt;div&gt;+ getEnginePower(): double&lt;/div&gt;&lt;div&gt;+ getCurrentSpeed(): double&lt;/div&gt;&lt;div&gt;+ getColor(): Color&lt;/div&gt;&lt;div&gt;+ setColor(Color): void&lt;/div&gt;&lt;div&gt;+ startEngine(): void&lt;/div&gt;&lt;div&gt;+ stopEngine(): void&lt;/div&gt;&lt;div&gt;#&amp;nbsp;speedMultiplier(): double&lt;/div&gt;&lt;div&gt;- speedFactor(): double&lt;/div&gt;&lt;div&gt;- incrementSpeed(double): void&lt;/div&gt;&lt;div&gt;- decrementSpeed(double): void&lt;/div&gt;&lt;div&gt;+ gas(double): void&lt;/div&gt;&lt;div&gt;+ brake(double): void&lt;/div&gt;" vertex="1">
           <mxGeometry height="202" width="200" y="118" as="geometry" />
         </mxCell>
         <mxCell id="TABIEwVqIFUD81Bl_kKk-22" parent="1" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=4;spacingRight=4;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" value="" vertex="1">
