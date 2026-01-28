@@ -2,7 +2,7 @@ import java.awt.Color;
 
 public abstract class Car {
     private int nrDoors;
-    protected double enginePower;
+    private double enginePower;
     private double currentSpeed;
     private Color color;
     public String modelName;
@@ -43,10 +43,16 @@ public abstract class Car {
         currentSpeed = 0;
     }
 
-    public abstract double speedFactor();
+    protected double speedMultiplier() {
+        return 1.0;
+    }
+
+    public double speedFactor() {
+        return getEnginePower() * 0.01 * speedMultiplier();
+    }
 
     public void incrementSpeed(double amount) {
-        currentSpeed = Math.min(getCurrentSpeed() + speedFactor() * amount, enginePower);
+        currentSpeed = Math.min(getCurrentSpeed() + speedFactor() * amount, getEnginePower());
     }
 
     public void decrementSpeed(double amount) {
