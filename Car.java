@@ -1,11 +1,18 @@
 import java.awt.Color;
 
-public abstract class Car {
+public abstract class Car implements Movable {
+
+    // Car specs
+    public String modelName;
+    private Color color;
     private int nrDoors;
     private double enginePower;
+
+    // Movement
     private double currentSpeed;
-    private Color color;
-    public String modelName;
+    private double x;
+    private double y;
+    private Direction direction = Direction.NORTH;
 
     public Car(int nrDoors, Color color, double enginePower, String modelName) {
         this.nrDoors = nrDoors;
@@ -67,5 +74,26 @@ public abstract class Car {
     // TODO fix this method according to lab pm
     public void brake(double amount) {
         decrementSpeed(amount);
+    }
+
+    public void move() {
+
+        double speed = getCurrentSpeed();
+
+        // Fancy switch to update coordinates
+        switch (direction) {
+            case NORTH -> y += speed;
+            case EAST -> x += speed;
+            case SOUTH -> y -= speed;
+            case WEST -> x -= speed;
+        }
+    }
+
+    public void turnRight() {
+        direction = direction.rotateRight();
+    }
+
+    public void turnLeft() {
+        direction = direction.rotateLeft();
     }
 }
