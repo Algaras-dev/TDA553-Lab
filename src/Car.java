@@ -1,9 +1,11 @@
+package src;
+
 import java.awt.Color;
 
 public abstract class Car implements Movable {
 
     // Car specs
-    public String modelName;
+    private String modelName;
     private Color color;
     private int nrDoors;
     private double enginePower;
@@ -20,6 +22,10 @@ public abstract class Car implements Movable {
         this.enginePower = enginePower;
         this.modelName = modelName;
         stopEngine();
+    }
+
+    public String getModelName() {
+        return modelName;
     }
 
     public int getNrDoors() {
@@ -40,6 +46,14 @@ public abstract class Car implements Movable {
 
     public void setColor(Color clr) {
         color = clr;
+    }
+
+    public Direction getDirection() {
+        return direction;
+    }
+
+    public double[] getLocation() {
+        return new double[] { x, y };
     }
 
     public void startEngine() {
@@ -66,14 +80,16 @@ public abstract class Car implements Movable {
         currentSpeed = Math.max(getCurrentSpeed() - speedFactor() * amount, 0);
     }
 
-    // TODO fix this method according to lab pm
-    public void gas(double amount) {
-        incrementSpeed(amount);
+    private double clampSpeed(double speed) {
+        return Math.min(Math.max(0, speed), 1);
     }
 
-    // TODO fix this method according to lab pm
+    public void gas(double amount) {
+        incrementSpeed(clampSpeed(amount));
+    }
+
     public void brake(double amount) {
-        decrementSpeed(amount);
+        decrementSpeed(clampSpeed(amount));
     }
 
     public void move() {
