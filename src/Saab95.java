@@ -19,8 +19,7 @@ public class Saab95 extends Car {
 
     @Override
     protected double speedMultiplier() {
-        double turbo = turboOn ? 1.3 : 1.0;
-        return turbo;
+        return turboOn ? 1.3 : 1.0;
     }
 
 }

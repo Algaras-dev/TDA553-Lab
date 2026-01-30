@@ -1,4 +1,5 @@
 package src;
+
 public enum Direction {
     NORTH,
     EAST,

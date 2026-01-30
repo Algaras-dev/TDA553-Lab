@@ -12,9 +12,9 @@ public abstract class Car implements Movable {
 
     // Movement
     private double currentSpeed;
-    private double x;
-    private double y;
-    private Direction direction = Direction.NORTH;
+    private double x; //default 0.0
+    private double y; //default 0.0
+    private Direction direction = Direction.NORTH; //North/East/South/West. Initial direction is north
 
     public Car(int nrDoors, Color color, double enginePower, String modelName) {
         this.nrDoors = nrDoors;
