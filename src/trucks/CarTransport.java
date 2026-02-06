@@ -15,4 +15,8 @@ public class CarTransport extends Truck {
         }
     }
 
+    public void raiseRamp() {
+        bed.raise();
+    }
+
 }
