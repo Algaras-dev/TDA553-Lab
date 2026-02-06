@@ -1,4 +1,4 @@
-package src;
+package src.cars;
 
 import java.awt.*;
 

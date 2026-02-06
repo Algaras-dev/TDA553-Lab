@@ -10,7 +10,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import src.Direction;
-import src.mocks.MockCar;
+import test.mocks.MockCar;
 
 public class TestCar {
 

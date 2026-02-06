@@ -7,7 +7,7 @@ import java.awt.Color;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import src.Volvo240;
+import src.cars.Volvo240;
 
 public class TestVolvo {
     private Volvo240 car;

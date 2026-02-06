@@ -52,6 +52,11 @@ public abstract class Vehicle implements Movable {
         return direction;
     }
 
+    public void setLocation(double newX, double newY) {
+        x = newX;
+        y = newY;
+    }
+
     public double[] getLocation() {
         return new double[] { x, y };
     }

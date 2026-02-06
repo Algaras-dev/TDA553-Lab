@@ -1,8 +1,8 @@
-package src.mocks;
+package test.mocks;
 
 import java.awt.Color;
 
-import src.Car;
+import src.cars.Car;
 
 public class MockCar extends Car {
 
