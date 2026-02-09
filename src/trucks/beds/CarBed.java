@@ -1,12 +1,13 @@
 package src.trucks.beds;
 
 import java.util.LinkedList;
+import java.util.List;
 
 import src.cars.Car;
 
 public class CarBed extends TruckBed {
     private int maxLoad;
-    private LinkedList<Car> load;
+    private List<Car> load;
 
     public CarBed() {
         load = new LinkedList<>();
