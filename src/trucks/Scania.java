@@ -1,6 +1,6 @@
 package src.trucks;
 
-import java.awt.*;
+import java.awt.Color;
 
 import src.trucks.beds.CargoBed;
 
@@ -11,7 +11,7 @@ public class Scania extends Truck {
         this(new CargoBed(70));
     }
 
-    private Scania(CargoBed bed) {
+    public Scania(CargoBed bed) {
         super(2, Color.BLACK, 200, "Scania", bed, 9060, 5933, 2476);
         this.bed = bed;
     }

@@ -1,6 +1,8 @@
 package src.trucks;
 
-import java.awt.*;
+import java.awt.Color;
+import java.util.List;
+import java.util.ArrayList;
 
 import src.cars.Car;
 import src.trucks.beds.CarBed;
@@ -12,7 +14,7 @@ public class CarTransport extends Truck {
         this(new CarBed());
     }
 
-    private CarTransport(CarBed bed) {
+    public CarTransport(CarBed bed) {
         super(2, Color.GRAY, 220, "Car Transporter", bed, 12000, 14200, 2500);
         this.bed = bed;
     }
@@ -29,24 +31,20 @@ public class CarTransport extends Truck {
 
     public void loadCar(Car car) {
         double[] selfLoc = getLocation();
-        double[] carLoc = car.getLocation();
-        double distance = Math.sqrt(
-                Math.pow(carLoc[0] - selfLoc[0], 2) +
-                        Math.pow(carLoc[1] - selfLoc[1], 2));
-
-        // Car must be within a radius of 25 units from the truck
-        if (distance < 25) {
-            bed.loadCar(car);
-        }
+        bed.loadCar(car, selfLoc);
     }
 
     public Car unloadCar() {
         Car car = bed.unloadCar();
         if (car != null) {
-            car.setLocation(getLocation()[0], getLocation()[1] - 10); //Car is unloaded 10 units below the truck in the y-direction
+            car.setLocation(getLocation()[0], getLocation()[1] - 10); // Car is unloaded 10 units below the truck in the // y-direction
         }
 
         return car;
+    }
+
+    public List<Car> getLoad() {
+        return bed.getLoad();
     }
 
     @Override

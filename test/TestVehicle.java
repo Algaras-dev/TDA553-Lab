@@ -10,15 +10,15 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import src.Direction;
-import test.mocks.MockCar;
+import test.mocks.MockVehicle;
 
-public class TestCar {
+public class TestVehicle {
 
-    private MockCar car;
+    private MockVehicle car;
 
     @BeforeEach
     public void setup() {
-        car = new MockCar(4, Color.BLACK, 60, "Testing Vehicle");
+        car = new MockVehicle(4, Color.BLACK, 60, "Testing Vehicle", 1000, 4600, 1800);
     }
 
     // Testing get/set methods
