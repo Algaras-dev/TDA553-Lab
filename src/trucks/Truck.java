@@ -5,13 +5,12 @@ import java.awt.Color;
 import src.Vehicle;
 import src.trucks.beds.TruckBed;
 
-public abstract class Truck extends Vehicle {
+public abstract class Truck<B extends TruckBed> extends Vehicle {
 
-    protected final TruckBed bed;
+    protected final B bed;
 
-    public Truck(int nrDoors, Color color, double enginePower, String modelName, TruckBed bed) {
-        super(nrDoors, color, enginePower, modelName);
-
+    public Truck(int nrDoors, Color color, double enginePower, String modelName, B bed, int weight, int length, int width) {
+        super(nrDoors, color, enginePower, modelName, weight, length, width);
         this.bed = bed;
     }
 

@@ -9,6 +9,9 @@ public abstract class Vehicle implements Movable {
     private Color color;
     private int nrDoors;
     private double enginePower;
+    private int weight;
+    private int length;
+    private int width;
 
     // Movement
     private double currentSpeed;
@@ -16,11 +19,14 @@ public abstract class Vehicle implements Movable {
     private double y;
     private Direction direction = Direction.NORTH;
 
-    public Vehicle(int nrDoors, Color color, double enginePower, String modelName) {
+    public Vehicle(int nrDoors, Color color, double enginePower, String modelName, int weight, int length, int width) {
         this.nrDoors = nrDoors;
         this.color = color;
         this.enginePower = enginePower;
         this.modelName = modelName;
+        this.weight = weight;
+        this.length = length;
+        this.width = width;
         stopEngine();
     }
 
@@ -30,6 +36,18 @@ public abstract class Vehicle implements Movable {
 
     public int getNrDoors() {
         return nrDoors;
+    }
+
+    public int getWeight() {
+        return weight;
+    }
+
+    public int getLength() {
+        return length;
+    }
+
+    public int getWidth() {
+        return width;
     }
 
     public double getEnginePower() {
@@ -101,7 +119,6 @@ public abstract class Vehicle implements Movable {
 
         double speed = getCurrentSpeed();
 
-        // Fancy switch to update coordinates
         switch (direction) {
             case NORTH -> y += speed;
             case EAST -> x += speed;

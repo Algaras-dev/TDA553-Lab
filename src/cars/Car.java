@@ -6,7 +6,7 @@ import src.Vehicle;
 
 public abstract class Car extends Vehicle {
 
-    public Car(int nrDoors, Color color, double enginePower, String modelName) {
-        super(nrDoors, color, enginePower, modelName);
+    public Car(int nrDoors, Color color, double enginePower, String modelName, int weight, int length, int width) {
+        super(nrDoors, color, enginePower, modelName, weight, length, width);
     }
 }
