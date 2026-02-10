@@ -62,8 +62,8 @@ public class CarBed implements TruckBed {
     }
 
     public void loadCar(Car car, double[] selfLoc) {
-        if (!inDrivingPosition() && carFits(car) && carInRadius(car, selfLoc)) { // Ramp must be down and car must fit and be in radius
-            load.addLast(car);
+        if (!rampUp && carFits(car) && carInRadius(car, selfLoc)) { // Ramp must be down and car must fit and be in radius
+            load.addFirst(car);
         }
     }
 

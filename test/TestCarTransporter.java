@@ -8,7 +8,6 @@ import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import src.cars.Car;
 import src.cars.Volvo240;
 import src.trucks.CarTransport;
 import src.trucks.beds.CarBed;

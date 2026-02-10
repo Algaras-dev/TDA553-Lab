@@ -14,6 +14,9 @@ public class Workshop<C extends Car> {
     }
 
     public void addCar(C car) {
+        if (carList.size() >= maxCars) {
+            throw new IllegalStateException("Workshop is full");
+        }
         carList.add(car);
     }
 

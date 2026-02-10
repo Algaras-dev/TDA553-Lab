@@ -5,7 +5,7 @@ import java.awt.Color;
 import src.trucks.Truck;
 import src.trucks.beds.TruckBed;
 
-public class MockTruck extends Truck {
+public class MockTruck extends Truck<TruckBed> {
 
     public MockTruck(int nrDoors, Color color, double enginePower, String modelName, TruckBed bed, int weight,
             int length, int width) {

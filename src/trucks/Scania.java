@@ -4,8 +4,7 @@ import java.awt.Color;
 
 import src.trucks.beds.CargoBed;
 
-public class Scania extends Truck {
-    private final CargoBed bed;
+public class Scania extends Truck<CargoBed> {
 
     public Scania() {
         this(new CargoBed(70));
@@ -13,7 +12,6 @@ public class Scania extends Truck {
 
     public Scania(CargoBed bed) {
         super(2, Color.BLACK, 200, "Scania", bed, 9060, 5933, 2476);
-        this.bed = bed;
     }
 
     public void raiseBed(int degrees) {

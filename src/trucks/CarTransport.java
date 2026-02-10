@@ -2,13 +2,11 @@ package src.trucks;
 
 import java.awt.Color;
 import java.util.List;
-import java.util.ArrayList;
 
 import src.cars.Car;
 import src.trucks.beds.CarBed;
 
-public class CarTransport extends Truck {
-    private final CarBed bed;
+public class CarTransport extends Truck<CarBed> {
 
     public CarTransport() {
         this(new CarBed());
@@ -16,7 +14,6 @@ public class CarTransport extends Truck {
 
     public CarTransport(CarBed bed) {
         super(2, Color.GRAY, 220, "Car Transporter", bed, 12000, 14200, 2500);
-        this.bed = bed;
     }
 
     public void lowerRamp() {

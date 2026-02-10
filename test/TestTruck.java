@@ -10,11 +10,12 @@ import org.junit.jupiter.api.Test;
 
 import src.trucks.Truck;
 import src.trucks.beds.CargoBed;
+import src.trucks.beds.TruckBed;
 import test.mocks.MockTruck;
 
 public class TestTruck {
     private CargoBed bed;
-    private Truck truck;
+    private Truck<TruckBed> truck;
 
     @BeforeEach
     public void setup() {
