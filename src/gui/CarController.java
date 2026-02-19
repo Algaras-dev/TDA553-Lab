@@ -1,18 +1,20 @@
 package src.gui;
 
-import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.geom.Point2D;
+import java.awt.geom.Rectangle2D;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.swing.Timer;
+
+import src.buildings.Workshop;
+import src.vehicles.Vehicle;
 import src.vehicles.cars.Car;
 import src.vehicles.cars.Saab95;
 import src.vehicles.cars.Volvo240;
 import src.vehicles.trucks.Scania;
-import src.vehicles.Vehicle;
-
-import java.awt.Dimension;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.geom.Point2D;
-import java.util.ArrayList;
 
 /*
 * This class represents the Controller part in the MVC pattern.
@@ -39,6 +41,7 @@ public class CarController {
         CarController cc = new CarController();
 
         cc.vehicles.add(new Volvo240());
+        cc.vehicles.getLast().setLocation(300, 0);
 
         cc.vehicles.add(new Saab95());
         cc.vehicles.getLast().setLocation(0, 100);
@@ -58,36 +61,54 @@ public class CarController {
      * view to update its images. Change this method to your needs.
      */
     private class TimerListener implements ActionListener {
+        private List<Car> toRemove = new ArrayList<>();
+
         public void actionPerformed(ActionEvent e) {
             for (Vehicle vehicle : vehicles) {
+                Rectangle2D.Double vehicleBounds = getBounds(vehicle);
 
-                Dimension frameSize = frame.drawPanel.getSize();
-                Point2D.Double location = vehicle.getLocation();
-                int vehicle_height = frame.drawPanel.imageMap.get(vehicle.getName()).getHeight();
-                int vehicle_width = frame.drawPanel.imageMap.get(vehicle.getName()).getWidth();
-
-                // * Bounce car on wall
-                // North
-                if (location.y < 0) {
+                if (Collisions.collidesWithEdges(frame.drawPanel, vehicleBounds)) {
                     vehicle.turnAround();
                 }
-                // South
-                if (location.y + vehicle_height > frameSize.height) {
-                    vehicle.turnAround();
-                }
-                // West
-                if (location.x < 0) {
-                    vehicle.turnAround();
-                }
-                // East
-                if (location.x + vehicle_width > frameSize.width) {
-                    vehicle.turnAround();
-                }
-
                 vehicle.move();
+
+                if (vehicle instanceof Car) {
+                    enterWorkshop((Car) vehicle, vehicleBounds);
+                }
             }
+
+            // Remove any cars parked in workshops
+            for (Vehicle vehicle : toRemove) {
+                vehicles.remove(vehicle);
+                frame.drawPanel.removeObject(vehicle);
+            }
+            toRemove.clear();
+
             frame.drawPanel.repaint();
         }
+
+        private void enterWorkshop(Car car, Rectangle2D.Double vehicleBounds) {
+            for (Workshop<? extends Car> workshop : frame.drawPanel.workshops) {
+                Rectangle2D.Double workshopBounds = getBounds(workshop);
+
+                if (vehicleBounds.intersects(workshopBounds)) {
+                    boolean added = workshop.tryAddCar(car);
+
+                    if (added) { // Remove car from list of vehicles and list of objects
+                        car.stopEngine();
+                        toRemove.add(car);
+                    }
+                }
+            }
+        }
+    }
+
+    private Rectangle2D.Double getBounds(Drawable item) {
+        Point2D.Double location = item.getLocation();
+        int[] size = frame.drawPanel.getImageSize(item);
+        Rectangle2D.Double workshopBounds = new Rectangle2D.Double(
+                location.x, location.y, size[0], size[1]);
+        return workshopBounds;
     }
 
     // Calls the gas method for each car once
@@ -118,7 +139,7 @@ public class CarController {
     void turboOn() {
         for (Vehicle vehicle : vehicles) {
             if (vehicle instanceof Saab95) {
-                ((Saab95)vehicle).setTurboOn();
+                ((Saab95) vehicle).setTurboOn();
             }
         }
     }
@@ -126,7 +147,7 @@ public class CarController {
     void turboOff() {
         for (Vehicle vehicle : vehicles) {
             if (vehicle instanceof Saab95) {
-                ((Saab95)vehicle).setTurboOff();
+                ((Saab95) vehicle).setTurboOff();
             }
         }
     }
@@ -134,7 +155,7 @@ public class CarController {
     void liftBed() {
         for (Vehicle vehicle : vehicles) {
             if (vehicle instanceof Scania) {
-                ((Scania)vehicle).raiseBed(70);
+                ((Scania) vehicle).raiseBed(70);
             }
         }
     }

@@ -16,8 +16,8 @@ public class TestWorkshop {
 
     @BeforeEach
     void setup() {
-        carWorkshop = new Workshop<>(4);
-        saabWorkshop = new Workshop<>(2);
+        carWorkshop = new Workshop<>(4, Car.class);
+        saabWorkshop = new Workshop<>(2, Saab95.class);
 
         saab = new Saab95();
         car = new Saab95();
