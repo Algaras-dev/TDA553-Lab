@@ -15,6 +15,7 @@ import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 import src.buildings.Workshop;
+import src.vehicles.Vehicle;
 import src.vehicles.cars.Volvo240;
 
 // This panel represents the animated part of the view with the car images.
@@ -24,7 +25,7 @@ public class DrawPanel extends JPanel {
     List<Workshop<?>> workshops = new ArrayList<>();
 
     // Initializes the panel and reads the images
-    public DrawPanel(int x, int y, ArrayList<? extends Drawable> vehicles) {
+    public DrawPanel(int x, int y, ArrayList<? extends Vehicle> vehicles) {
         this.setDoubleBuffered(true);
         this.setPreferredSize(new Dimension(x, y));
         this.setBackground(Color.green);
