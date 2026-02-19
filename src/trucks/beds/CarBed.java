@@ -1,13 +1,12 @@
 package src.trucks.beds;
 
-import java.util.LinkedList;
-import java.util.List;
+import java.util.Stack;
 
 import src.cars.Car;
 
 public class CarBed implements TruckBed {
     private boolean rampUp;
-    private List<Car> load;
+    private Stack<Car> load;
 
     private int maxCount;
     private int maxWeight;
@@ -25,10 +24,10 @@ public class CarBed implements TruckBed {
         this.maxLength = maxLength;
         this.maxWidth = maxWidth;
 
-        load = new LinkedList<>();
+        load = new Stack<>();
     }
 
-    public List<Car> getLoad() {
+    public Stack<Car> getLoad() {
         return load;
     }
 
@@ -63,13 +62,14 @@ public class CarBed implements TruckBed {
 
     public void loadCar(Car car, double[] selfLoc) {
         if (!rampUp && carFits(car) && carInRadius(car, selfLoc)) { // Ramp must be down and car must fit and be in radius
-            load.addFirst(car);
+            load.push(car);
         }
     }
 
     public Car unloadCar() {
         if (load.isEmpty() || inDrivingPosition())
             return null;
-        return load.removeLast(); // Unload according to (First In - Last Out)
+        return load.pop(); // Unload according to (First In - Last Out)
     }
 }
+

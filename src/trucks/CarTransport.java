@@ -1,7 +1,7 @@
 package src.trucks;
 
 import java.awt.Color;
-import java.util.List;
+import java.util.Stack;
 
 import src.cars.Car;
 import src.trucks.beds.CarBed;
@@ -34,13 +34,14 @@ public class CarTransport extends Truck<CarBed> {
     public Car unloadCar() {
         Car car = bed.unloadCar();
         if (car != null) {
-            car.setLocation(getLocation()[0], getLocation()[1] - 10); // Car is unloaded 10 units below the truck in the // y-direction
+            car.setLocation(getLocation()[0], getLocation()[1] - 10); // Car is unloaded 10 units below the truck in the
+                                                                      // // y-direction
         }
 
         return car;
     }
 
-    public List<Car> getLoad() {
+    public Stack<Car> getLoad() {
         return bed.getLoad();
     }
 
