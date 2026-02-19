@@ -78,6 +78,7 @@ class TestCarTransport {
         truck.startEngine();
         truck.gas(1);
         truck.move();
-        assertArrayEquals(volvo.getLocation(), truck.getLocation());
+        assertEquals(volvo.getLocation(), truck.getLocation());
+
     }
 }

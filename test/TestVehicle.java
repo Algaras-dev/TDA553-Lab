@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.awt.Color;
+import java.awt.geom.Point2D;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -60,7 +61,7 @@ public class TestVehicle {
 
     @Test
     void testGetLocation() {
-        assertArrayEquals(new double[] { 0.0, 0.0 }, car.getLocation(), 0.01);
+        assertEquals(new Point2D.Double(0, 0), car.getLocation());
     }
 
     // Testing control methods
@@ -146,18 +147,19 @@ public class TestVehicle {
     void testMove() {
         car.startEngine();
         car.move();
-        assertArrayEquals(new double[] { 0, car.getCurrentSpeed() }, car.getLocation(), 0.01);
+        assertEquals(new Point2D.Double(0, car.getCurrentSpeed()), car.getLocation());
 
         car.turnRight();
         car.move();
-        assertArrayEquals(new double[] { car.getCurrentSpeed(), car.getCurrentSpeed() }, car.getLocation(), 0.01);
+        assertEquals(new Point2D.Double(car.getCurrentSpeed(), car.getCurrentSpeed()), car.getLocation());
 
         car.turnRight();
         car.move();
-        assertArrayEquals(new double[] { car.getCurrentSpeed(), 0 }, car.getLocation(), 0.01);
+        assertEquals(new Point2D.Double(car.getCurrentSpeed(), 0), car.getLocation());
 
         car.turnRight();
         car.move();
-        assertArrayEquals(new double[] { 0, 0 }, car.getLocation(), 0.01);
+        assertEquals(new Point2D.Double(0, 0), car.getLocation());
+
     }
 }
