@@ -1,4 +1,4 @@
-package src;
+package src.gui;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -9,7 +9,7 @@ import javax.swing.*;
 
 // This panel represents the animated part of the view with the car images.
 
-public class DrawPanel extends JPanel{
+public class DrawPanel extends JPanel {
 
     // Just a single image, TODO: Generalize
     BufferedImage volvoImage;
@@ -17,10 +17,10 @@ public class DrawPanel extends JPanel{
     Point volvoPoint = new Point();
 
     BufferedImage volvoWorkshopImage;
-    Point volvoWorkshopPoint = new Point(300,300);
+    Point volvoWorkshopPoint = new Point(300, 300);
 
     // TODO: Make this general for all cars
-    void moveit(int x, int y){
+    void moveit(int x, int y) {
         volvoPoint.x = x;
         volvoPoint.y = y;
     }
@@ -36,12 +36,12 @@ public class DrawPanel extends JPanel{
             // everything is in the same main folder.
             // volvoImage = ImageIO.read(new File("Volvo240.jpg"));
 
-            // Rememember to rightclick src New -> Package -> name: pics -> MOVE *.jpg to pics.
+            // Rememember to rightclick src New -> Package -> name: pics -> MOVE *.jpg to
+            // pics.
             // if you are starting in IntelliJ.
             volvoImage = ImageIO.read(DrawPanel.class.getResourceAsStream("/pics/Volvo240.jpg"));
             volvoWorkshopImage = ImageIO.read(DrawPanel.class.getResourceAsStream("/pics/VolvoBrand.jpg"));
-        } catch (IOException ex)
-        {
+        } catch (IOException ex) {
             ex.printStackTrace();
         }
 

@@ -1,4 +1,4 @@
-package src;
+package src.gui;
 
 import javax.swing.*;
 
@@ -29,7 +29,7 @@ public class CarController {
     // A list of cars, modify if needed
     ArrayList<Car> cars = new ArrayList<>();
 
-    //methods:
+    // methods:
 
     public static void main(String[] args) {
         // Instance of this class
@@ -44,9 +44,10 @@ public class CarController {
         cc.timer.start();
     }
 
-    /* Each step the TimerListener moves all the cars in the list and tells the
-    * view to update its images. Change this method to your needs.
-    * */
+    /*
+     * Each step the TimerListener moves all the cars in the list and tells the
+     * view to update its images. Change this method to your needs.
+     */
     private class TimerListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             for (Car car : cars) {
@@ -63,8 +64,7 @@ public class CarController {
     // Calls the gas method for each car once
     void gas(double amount) {
         double gas = ((double) amount) / 100;
-        for (Car car : cars
-                ) {
+        for (Car car : cars) {
             car.gas(gas);
         }
     }
