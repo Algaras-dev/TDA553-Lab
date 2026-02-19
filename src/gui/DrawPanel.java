@@ -59,8 +59,8 @@ public class DrawPanel extends JPanel {
     /*
      * Width and height of image (in that order)
      */
-    public int[] getImageSize(Drawable item) {
-        BufferedImage image = imageMap.get(item.getName());
+    public int[] getImageSize(Drawable object) {
+        BufferedImage image = imageMap.get(object.getName());
 
         if (image != null) {
             return new int[] { image.getWidth(), image.getHeight() };
