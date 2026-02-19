@@ -2,6 +2,7 @@ package src.trucks;
 
 import java.awt.Color;
 import java.util.Stack;
+import java.awt.geom.Point2D;
 
 import src.cars.Car;
 import src.trucks.beds.CarBed;
@@ -27,14 +28,14 @@ public class CarTransport extends Truck<CarBed> {
     }
 
     public void loadCar(Car car) {
-        double[] selfLoc = getLocation();
+        Point2D.Double selfLoc = getLocation();
         bed.loadCar(car, selfLoc);
     }
 
     public Car unloadCar() {
         Car car = bed.unloadCar();
         if (car != null) {
-            car.setLocation(getLocation()[0], getLocation()[1] - 10); // Car is unloaded 10 units below the truck in the
+            car.setLocation(getLocation().x, getLocation().y - 10); // Car is unloaded 10 units below the truck in the
                                                                       // // y-direction
         }
 
@@ -48,10 +49,10 @@ public class CarTransport extends Truck<CarBed> {
     @Override
     public void move() {
         super.move();
-        double[] newLocation = getLocation();
+        Point2D.Double newLocation = getLocation();
 
         for (Car car : bed.getLoad()) {
-            car.setLocation(newLocation[0], newLocation[1]);
+            car.setLocation(newLocation.x, newLocation.y);
         }
     }
 

@@ -1,6 +1,7 @@
 package src.trucks.beds;
 
 import java.util.Stack;
+import java.awt.geom.Point2D;
 
 import src.cars.Car;
 
@@ -50,17 +51,17 @@ public class CarBed implements TruckBed {
                 && car.getWidth() < maxWidth;
     }
 
-    private boolean carInRadius(Car car, double[] selfLoc) {
-        double[] carLoc = car.getLocation();
+    private boolean carInRadius(Car car, Point2D.Double selfLoc) {
+        Point2D.Double carLoc = car.getLocation();
         double distance = Math.sqrt(
-                Math.pow(carLoc[0] - selfLoc[0], 2)
-                + Math.pow(carLoc[1] - selfLoc[1], 2));
+                Math.pow(carLoc.x - selfLoc.x, 2)
+                + Math.pow(carLoc.y - selfLoc.y, 2));
 
         // Car must be within a radius of 25 units from the truck. selfLoc is passed as an arg from the caller
         return distance < 25;
     }
 
-    public void loadCar(Car car, double[] selfLoc) {
+    public void loadCar(Car car, Point2D.Double selfLoc) {
         if (!rampUp && carFits(car) && carInRadius(car, selfLoc)) { // Ramp must be down and car must fit and be in radius
             load.push(car);
         }

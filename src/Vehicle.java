@@ -1,8 +1,9 @@
 package src;
 
 import java.awt.Color;
+import java.awt.geom.Point2D;
 
-public abstract class Vehicle implements Movable {
+public abstract class Vehicle implements Movable, Drawable {
 
     // Vehicle specs
     private String modelName;
@@ -15,8 +16,7 @@ public abstract class Vehicle implements Movable {
 
     // Movement
     private double currentSpeed;
-    private double x;
-    private double y;
+    private Point2D.Double location;
     private Direction direction = Direction.NORTH;
 
     public Vehicle(int nrDoors, Color color, double enginePower, String modelName, int weight, int length, int width) {
@@ -27,11 +27,17 @@ public abstract class Vehicle implements Movable {
         this.weight = weight;
         this.length = length;
         this.width = width;
+        this.location = new Point2D.Double(0, 0);
         stopEngine();
     }
 
     public String getModelName() {
         return modelName;
+    }
+
+    // Alternate name for complying with <<Drawable>>
+    public String getName() {
+        return getModelName();
     }
 
     public int getNrDoors() {
@@ -71,12 +77,12 @@ public abstract class Vehicle implements Movable {
     }
 
     public void setLocation(double newX, double newY) {
-        x = newX;
-        y = newY;
+        location.x = newX;
+        location.y = newY;
     }
 
-    public double[] getLocation() {
-        return new double[] { x, y };
+    public Point2D.Double getLocation() {
+        return new Point2D.Double(location.x, location.y);
     }
 
     public void startEngine() {
@@ -120,10 +126,10 @@ public abstract class Vehicle implements Movable {
         double speed = getCurrentSpeed();
 
         switch (direction) {
-            case NORTH -> y += speed;
-            case EAST -> x += speed;
-            case SOUTH -> y -= speed;
-            case WEST -> x -= speed;
+            case NORTH -> location.y += speed;
+            case EAST -> location.x += speed;
+            case SOUTH -> location.y -= speed;
+            case WEST -> location.x -= speed;
         }
     }
 
@@ -133,5 +139,9 @@ public abstract class Vehicle implements Movable {
 
     public void turnLeft() {
         direction = direction.rotateLeft();
+    }
+
+    public void turnAround() {
+        direction = direction.opposite();
     }
 }

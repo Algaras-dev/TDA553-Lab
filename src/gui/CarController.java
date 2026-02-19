@@ -2,11 +2,16 @@ package src.gui;
 
 import javax.swing.*;
 
+import src.Vehicle;
 import src.cars.Car;
+import src.cars.Saab95;
 import src.cars.Volvo240;
+import src.trucks.Scania;
 
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.geom.Point2D;
 import java.util.ArrayList;
 
 /*
@@ -16,8 +21,7 @@ import java.util.ArrayList;
  */
 
 public class CarController {
-    // member fields:
-
+    // * Member fields
     // The delay (ms) corresponds to 20 updates a sec (hz)
     private final int delay = 50;
     // The timer is started with a listener (see below) that executes the statements
@@ -27,15 +31,20 @@ public class CarController {
     // The frame that represents this instance View of the MVC pattern
     CarView frame;
     // A list of cars, modify if needed
-    ArrayList<Car> cars = new ArrayList<>();
+    ArrayList<Vehicle> vehicles = new ArrayList<>();
 
-    // methods:
-
+    // * Methods
     public static void main(String[] args) {
         // Instance of this class
         CarController cc = new CarController();
 
-        cc.cars.add(new Volvo240());
+        cc.vehicles.add(new Volvo240());
+
+        cc.vehicles.add(new Saab95());
+        cc.vehicles.getLast().setLocation(0, 100);
+
+        cc.vehicles.add(new Scania());
+        cc.vehicles.getLast().setLocation(0, 200);
 
         // Start a new view and send a reference of self
         cc.frame = new CarView("CarSim 1.0", cc);
@@ -50,27 +59,47 @@ public class CarController {
      */
     private class TimerListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            for (Car car : cars) {
-                car.move();
-                int x = (int) Math.round(car.getLocation()[0]);
-                int y = (int) Math.round(car.getLocation()[1]);
-                frame.drawPanel.moveit(x, y);
-                // repaint() calls the paintComponent method of the panel
-                frame.drawPanel.repaint();
+            for (Vehicle vehicle : vehicles) {
+
+                Dimension frameSize = frame.drawPanel.getSize();
+                Point2D.Double location = vehicle.getLocation();
+                int vehicle_height = frame.drawPanel.imageMap.get(vehicle.getName()).getHeight();
+                int vehicle_width = frame.drawPanel.imageMap.get(vehicle.getName()).getWidth();
+
+                // * Bounce car on wall
+                // North
+                if (location.y < 0) {
+                    vehicle.turnAround();
+                }
+                // South
+                if (location.y + vehicle_height> frameSize.height) {
+                    vehicle.turnAround();
+                }
+                // West
+                if (location.x < 0) {
+                    vehicle.turnAround();
+                }
+                // East
+                if (location.x + vehicle_width > frameSize.width) {
+                    vehicle.turnAround();
+                }
+
+                vehicle.move();
             }
+            frame.drawPanel.repaint();
         }
     }
 
     // Calls the gas method for each car once
     void gas(double amount) {
-        for (Car car : cars) {
-            car.gas(amount);
+        for (Vehicle vehicle : vehicles) {
+            vehicle.gas(amount);
         }
     }
 
     void brake(double amount) {
-        for (Car car : cars) {
-            car.brake(amount);
+        for (Vehicle vehicle : vehicles) {
+            vehicle.brake(amount);
         }
     }
 }
