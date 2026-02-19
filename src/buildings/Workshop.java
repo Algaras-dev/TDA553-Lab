@@ -1,10 +1,11 @@
-package src;
+package src.buildings;
 
 import java.awt.Point;
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
 
-import src.cars.Car;
+import src.vehicles.cars.Car;
+import src.gui.Drawable;
 
 public class Workshop<C extends Car> implements Drawable {
     private int maxCars;

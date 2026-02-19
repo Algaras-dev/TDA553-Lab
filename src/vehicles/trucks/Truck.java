@@ -1,9 +1,9 @@
-package src.trucks;
+package src.vehicles.trucks;
 
 import java.awt.Color;
 
-import src.Vehicle;
-import src.trucks.beds.TruckBed;
+import src.vehicles.trucks.beds.TruckBed;
+import src.vehicles.Vehicle;
 
 public abstract class Truck<B extends TruckBed> extends Vehicle {
 

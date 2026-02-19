@@ -1,11 +1,11 @@
-package src.trucks;
+package src.vehicles.trucks;
 
 import java.awt.Color;
 import java.util.Stack;
 import java.awt.geom.Point2D;
 
-import src.cars.Car;
-import src.trucks.beds.CarBed;
+import src.vehicles.cars.Car;
+import src.vehicles.trucks.beds.CarBed;
 
 public class CarTransport extends Truck<CarBed> {
 

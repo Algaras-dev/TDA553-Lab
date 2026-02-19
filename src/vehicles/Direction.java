@@ -1,4 +1,4 @@
-package src;
+package src.vehicles;
 
 public enum Direction {
     NORTH,

@@ -1,7 +1,9 @@
-package src;
+package src.vehicles;
 
 import java.awt.Color;
 import java.awt.geom.Point2D;
+
+import src.gui.Drawable;
 
 public abstract class Vehicle implements Movable, Drawable {
 

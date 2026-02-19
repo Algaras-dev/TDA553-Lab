@@ -1,8 +1,8 @@
-package src.trucks;
+package src.vehicles.trucks;
 
 import java.awt.Color;
 
-import src.trucks.beds.CargoBed;
+import src.vehicles.trucks.beds.CargoBed;
 
 public class Scania extends Truck<CargoBed> {
 

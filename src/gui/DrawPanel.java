@@ -11,11 +11,10 @@ import java.util.Map;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
-import src.Drawable;
-import src.Vehicle;
-import src.Workshop;
-import src.cars.Car;
-import src.cars.Volvo240;
+import src.buildings.Workshop;
+import src.vehicles.cars.Car;
+import src.vehicles.cars.Volvo240;
+import src.vehicles.Vehicle;
 
 // This panel represents the animated part of the view with the car images.
 

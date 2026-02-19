@@ -2,11 +2,11 @@ package src.gui;
 
 import javax.swing.*;
 
-import src.Vehicle;
-import src.cars.Car;
-import src.cars.Saab95;
-import src.cars.Volvo240;
-import src.trucks.Scania;
+import src.vehicles.cars.Car;
+import src.vehicles.cars.Saab95;
+import src.vehicles.cars.Volvo240;
+import src.vehicles.trucks.Scania;
+import src.vehicles.Vehicle;
 
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;

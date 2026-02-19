@@ -1,4 +1,4 @@
-package src;
+package src.gui;
 
 import java.awt.Point;
 import java.awt.geom.Point2D;

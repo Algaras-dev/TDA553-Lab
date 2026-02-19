@@ -8,9 +8,9 @@ import java.awt.Color;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import src.trucks.Truck;
-import src.trucks.beds.CargoBed;
-import src.trucks.beds.TruckBed;
+import src.vehicles.trucks.Truck;
+import src.vehicles.trucks.beds.CargoBed;
+import src.vehicles.trucks.beds.TruckBed;
 import test.mocks.MockTruck;
 
 public class TestTruck {

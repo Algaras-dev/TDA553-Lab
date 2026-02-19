@@ -1,4 +1,4 @@
-package src;
+package src.vehicles;
 
 public interface Movable {
     public void move();

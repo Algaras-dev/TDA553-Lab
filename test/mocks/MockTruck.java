@@ -2,8 +2,8 @@ package test.mocks;
 
 import java.awt.Color;
 
-import src.trucks.Truck;
-import src.trucks.beds.TruckBed;
+import src.vehicles.trucks.Truck;
+import src.vehicles.trucks.beds.TruckBed;
 
 public class MockTruck extends Truck<TruckBed> {
 
