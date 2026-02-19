@@ -27,4 +27,9 @@ public abstract class Truck<B extends TruckBed> extends Vehicle {
             super.gas(amount);
         }
     }
+
+    @Override
+    protected double speedMultiplier() {
+        return 0.5;
+    }
 }

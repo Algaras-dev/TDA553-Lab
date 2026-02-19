@@ -72,7 +72,7 @@ public class CarController {
                     vehicle.turnAround();
                 }
                 // South
-                if (location.y + vehicle_height> frameSize.height) {
+                if (location.y + vehicle_height > frameSize.height) {
                     vehicle.turnAround();
                 }
                 // West
@@ -100,6 +100,50 @@ public class CarController {
     void brake(double amount) {
         for (Vehicle vehicle : vehicles) {
             vehicle.brake(amount);
+        }
+    }
+
+    void startAll() {
+        for (Vehicle vehicle : vehicles) {
+            vehicle.startEngine();
+        }
+    }
+
+    void stopAll() {
+        for (Vehicle vehicle : vehicles) {
+            vehicle.stopEngine();
+        }
+    }
+
+    void turboOn() {
+        for (Vehicle vehicle : vehicles) {
+            if (vehicle instanceof Saab95) {
+                ((Saab95)vehicle).setTurboOn();
+            }
+        }
+    }
+
+    void turboOff() {
+        for (Vehicle vehicle : vehicles) {
+            if (vehicle instanceof Saab95) {
+                ((Saab95)vehicle).setTurboOff();
+            }
+        }
+    }
+
+    void liftBed() {
+        for (Vehicle vehicle : vehicles) {
+            if (vehicle instanceof Scania) {
+                ((Scania)vehicle).raiseBed(70);
+            }
+        }
+    }
+
+    void lowerBed() {
+        for (Vehicle vehicle : vehicles) {
+            if (vehicle instanceof Scania) {
+                ((Scania) vehicle).lowerBed(70);
+            }
         }
     }
 }
