@@ -1,6 +1,6 @@
 package src.vehicles.cars;
 
-import java.awt.*;
+import java.awt.Color;
 
 public class Volvo240 extends Car {
 

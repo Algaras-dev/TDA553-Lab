@@ -1,7 +1,7 @@
 package src.vehicles.trucks.beds;
 
-import java.util.Stack;
 import java.awt.geom.Point2D;
+import java.util.Stack;
 
 import src.vehicles.cars.Car;
 
