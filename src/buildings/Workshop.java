@@ -10,7 +10,6 @@ public class Workshop<C extends Car> implements Drawable {
     private int maxCars;
     private ArrayList<C> carList;
 
-    private String workshopName;
     private Class<C> workshopType;
 
     private Point2D.Double location;

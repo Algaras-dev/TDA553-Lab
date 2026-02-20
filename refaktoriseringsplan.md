@@ -10,10 +10,22 @@ __Finns det starkare beroenden än nödvändigt?__
 
 # Uppgift 3: Ansvarsområden
 __Vilka ansvarsområden har era klasser?__
-- 
+- CarController ansvarar för att:
+    1. Köra tick-loopen: flytta fordon + repaint
+    2. Hantera logik (kollisioner, workshop-inträde...)
+    3. Skapar vehicles
+- CarView ansvarar för att:
+    1. Bygga hele GUI:t (knappar, spinner...)
+    2. Koppla knappar med actionListeners, som anropar CarController 
+-DrawPanel ansvarar för att:
+    1. Rita ut alla objekt
+    2. Ladda/hantera bilder
+    3. Skapar workshops
 
 __Vilka anledningar har de att förändras?__
 - Ingen väldefinierad _main_ metod, det görs från `CarController` och `DrawPanel`
+- CarController gör för mycket saker
+
 
 __På vilka klasser skulle ni behöva tillämpa dekomposition för att bättre följa SoC och SRP?__
 - Största problemet är CarController
@@ -27,5 +39,7 @@ __Refaktoriseringsplan__
 2. Skapa WorldView (getWorldSize, getImageSize, removeDrawable, repaintWorld). Låt DrawPanel implementera WorldView. Låt CarView ha DrawPanel: WorldView.
 3. Ändra Collisions (CollisionsService) så att den tar Dimension i stället för att vara beroende av JPanel
 4. Skapa VehicleSimulator som äger List<Vehicle> + tick() + metoder för att kontrollera fordon (flytta looperna från CarController hit)
-5. Byta ut actionPerformed i CarController::TimerListener med
-6. 
+5. Byta ut actionPerformed i CarController::TimerListener med en onTick()-metod
+6. Skapa WorkshopManager som äger List<Workshop<? extends Car>> + en tryEnterWorkshop()
+7. Skapa BoundsService för att flytta getBounds()-metoden ut från CarController. Skapa ett fält för WorldView för att komma åt getImageSize().
+8. Flytta main()-metoden från CarController till en ny Main-klass som initialiserar alla instanser
