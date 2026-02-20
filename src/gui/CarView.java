@@ -148,7 +148,7 @@ public class CarView extends JFrame {
             }
         });
 
-        turboOnButton.addActionListener(new ActionListener() {
+        turboOffButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 carC.turboOff();

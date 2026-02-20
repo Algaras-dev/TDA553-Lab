@@ -16,13 +16,14 @@ import javax.swing.JPanel;
 
 import src.buildings.Workshop;
 import src.vehicles.Vehicle;
+import src.vehicles.cars.Car;
 import src.vehicles.cars.Volvo240;
 
 // This panel represents the animated part of the view with the car images.
 public class DrawPanel extends JPanel {
     private ArrayList<Drawable> objects = new ArrayList<>();
     private Map<String, BufferedImage> imageMap = new HashMap<>();
-    List<Workshop<?>> workshops = new ArrayList<>();
+    List<Workshop<? extends Car>> workshops = new ArrayList<>();
 
     // Initializes the panel and reads the images
     public DrawPanel(int x, int y, ArrayList<? extends Vehicle> vehicles) {
