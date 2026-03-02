@@ -2,7 +2,7 @@ package test.mocks;
 
 import java.awt.Color;
 
-import src.vehicles.Vehicle;
+import src.model.vehicles.Vehicle;
 
 public class MockVehicle extends Vehicle {
 

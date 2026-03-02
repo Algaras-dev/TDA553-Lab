@@ -1,4 +1,4 @@
-package src.gui;
+package src.oldGui;
 
 import java.awt.Dimension;
 import java.awt.geom.Rectangle2D;

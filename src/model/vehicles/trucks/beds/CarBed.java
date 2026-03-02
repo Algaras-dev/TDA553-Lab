@@ -1,9 +1,9 @@
-package src.vehicles.trucks.beds;
+package src.model.vehicles.trucks.beds;
 
 import java.awt.geom.Point2D;
 import java.util.Stack;
 
-import src.vehicles.cars.Car;
+import src.model.vehicles.cars.Car;
 
 public class CarBed implements TruckBed {
     private boolean rampUp;

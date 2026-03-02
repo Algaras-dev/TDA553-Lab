@@ -1,4 +1,4 @@
-package src.vehicles.trucks.beds;
+package src.model.vehicles.trucks.beds;
 
 public class CargoBed implements TruckBed {
     private int angle;

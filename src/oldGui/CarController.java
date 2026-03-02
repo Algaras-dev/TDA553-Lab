@@ -1,4 +1,4 @@
-package src.gui;
+package src.oldGui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,12 +9,13 @@ import java.util.List;
 
 import javax.swing.Timer;
 
-import src.buildings.Workshop;
-import src.vehicles.Vehicle;
-import src.vehicles.cars.Car;
-import src.vehicles.cars.Saab95;
-import src.vehicles.cars.Volvo240;
-import src.vehicles.trucks.Scania;
+import src.model.Drawable;
+import src.model.buildings.Workshop;
+import src.model.vehicles.Vehicle;
+import src.model.vehicles.cars.Car;
+import src.model.vehicles.cars.Saab95;
+import src.model.vehicles.cars.Volvo240;
+import src.model.vehicles.trucks.Scania;
 
 /*
 * This class represents the Controller part in the MVC pattern.

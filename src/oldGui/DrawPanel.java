@@ -1,4 +1,4 @@
-package src.gui;
+package src.oldGui;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -14,10 +14,11 @@ import java.util.Map;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
-import src.buildings.Workshop;
-import src.vehicles.Vehicle;
-import src.vehicles.cars.Car;
-import src.vehicles.cars.Volvo240;
+import src.model.Drawable;
+import src.model.buildings.Workshop;
+import src.model.vehicles.Vehicle;
+import src.model.vehicles.cars.Car;
+import src.model.vehicles.cars.Volvo240;
 
 // This panel represents the animated part of the view with the car images.
 public class DrawPanel extends JPanel {

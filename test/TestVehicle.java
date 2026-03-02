@@ -10,7 +10,7 @@ import java.awt.geom.Point2D;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import src.vehicles.Direction;
+import src.model.vehicles.Direction;
 import test.mocks.MockVehicle;
 
 public class TestVehicle {

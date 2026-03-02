@@ -1,8 +1,8 @@
-package src.vehicles.cars;
+package src.model.vehicles.cars;
 
 import java.awt.Color;
 
-import src.vehicles.Vehicle;
+import src.model.vehicles.Vehicle;
 
 public abstract class Car extends Vehicle {
 

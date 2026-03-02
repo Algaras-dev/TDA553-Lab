@@ -3,9 +3,9 @@ package test;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import src.buildings.Workshop;
-import src.vehicles.cars.Car;
-import src.vehicles.cars.Saab95;
+import src.model.buildings.Workshop;
+import src.model.vehicles.cars.Car;
+import src.model.vehicles.cars.Saab95;
 
 public class TestWorkshop {
     private Workshop<Car> carWorkshop;

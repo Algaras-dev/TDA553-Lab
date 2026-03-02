@@ -7,9 +7,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import src.vehicles.cars.Volvo240;
-import src.vehicles.trucks.CarTransport;
-import src.vehicles.trucks.beds.CarBed;
+import src.model.vehicles.cars.Volvo240;
+import src.model.vehicles.trucks.CarTransport;
+import src.model.vehicles.trucks.beds.CarBed;
 
 class TestCarTransport {
     private CarTransport truck;
