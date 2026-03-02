@@ -1,11 +1,11 @@
 package src.model.vehicles.trucks;
 
 import java.awt.Color;
-import java.awt.geom.Point2D;
 import java.util.Stack;
 
 import src.model.vehicles.cars.Car;
 import src.model.vehicles.trucks.beds.CarBed;
+import src.utils.DoublePoint;
 
 public class CarTransport extends Truck<CarBed> {
 
@@ -28,7 +28,7 @@ public class CarTransport extends Truck<CarBed> {
     }
 
     public void loadCar(Car car) {
-        Point2D.Double selfLoc = getLocation();
+        DoublePoint selfLoc = getLocation();
         bed.loadCar(car, selfLoc);
     }
 
@@ -36,7 +36,7 @@ public class CarTransport extends Truck<CarBed> {
         Car car = bed.unloadCar();
         if (car != null) {
             car.setLocation(getLocation().x, getLocation().y - 10); // Car is unloaded 10 units below the truck in the
-                                                                      // // y-direction
+                                                                    // // y-direction
         }
 
         return car;
@@ -49,7 +49,7 @@ public class CarTransport extends Truck<CarBed> {
     @Override
     public void move() {
         super.move();
-        Point2D.Double newLocation = getLocation();
+        DoublePoint newLocation = getLocation();
 
         for (Car car : bed.getLoad()) {
             car.setLocation(newLocation.x, newLocation.y);

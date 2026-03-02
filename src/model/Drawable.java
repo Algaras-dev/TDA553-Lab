@@ -1,8 +1,11 @@
 package src.model;
 
-import java.awt.geom.Point2D;
+import src.utils.DoublePoint;
 
 public interface Drawable {
-    public Point2D.Double getLocation();
+    public DoublePoint getLocation();
+
+    public void setLocation(DoublePoint newLocation);
+
     public String getName();
 }

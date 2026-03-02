@@ -1,10 +1,10 @@
 package src.model.buildings;
 
-import java.awt.geom.Point2D;
 import java.util.ArrayList;
 
 import src.model.Drawable;
 import src.model.vehicles.cars.Car;
+import src.utils.DoublePoint;
 
 public class Workshop<C extends Car> implements Drawable {
     private int maxCars;
@@ -12,7 +12,7 @@ public class Workshop<C extends Car> implements Drawable {
 
     private Class<C> workshopType;
 
-    private Point2D.Double location;
+    private DoublePoint location;
 
     public Workshop(int maxCars, Class<C> workshopType) {
         this(maxCars, 0, 0, workshopType);
@@ -21,7 +21,7 @@ public class Workshop<C extends Car> implements Drawable {
     public Workshop(int maxCars, double x, double y, Class<C> workshopType) {
         this.maxCars = maxCars;
         carList = new ArrayList<C>();
-        location = new Point2D.Double(x, y);
+        location = new DoublePoint(x, y);
         this.workshopType = workshopType;
     }
 
@@ -52,8 +52,14 @@ public class Workshop<C extends Car> implements Drawable {
         return null;
     }
 
-    public Point2D.Double getLocation() {
-        return new Point2D.Double(location.x, location.y);
+    @Override
+    public DoublePoint getLocation() {
+        return new DoublePoint(location);
+    }
+
+    @Override
+    public void setLocation(DoublePoint newLocation) {
+        location = new DoublePoint(newLocation);
     }
 
     public Class<C> getType() {

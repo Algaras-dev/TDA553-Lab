@@ -2,7 +2,6 @@ package src.oldGui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +15,7 @@ import src.model.vehicles.cars.Car;
 import src.model.vehicles.cars.Saab95;
 import src.model.vehicles.cars.Volvo240;
 import src.model.vehicles.trucks.Scania;
+import src.utils.DoublePoint;
 
 /*
 * This class represents the Controller part in the MVC pattern.
@@ -105,7 +105,7 @@ public class CarController {
     }
 
     private Rectangle2D.Double getBounds(Drawable item) {
-        Point2D.Double location = item.getLocation();
+        DoublePoint location = item.getLocation();
         int[] size = frame.drawPanel.getImageSize(item);
         Rectangle2D.Double workshopBounds = new Rectangle2D.Double(
                 location.x, location.y, size[0], size[1]);

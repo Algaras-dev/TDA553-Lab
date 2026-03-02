@@ -1,9 +1,9 @@
 package src.model.vehicles;
 
 import java.awt.Color;
-import java.awt.geom.Point2D;
 
 import src.model.Drawable;
+import src.utils.DoublePoint;
 
 public abstract class Vehicle implements Movable, Drawable {
 
@@ -18,7 +18,7 @@ public abstract class Vehicle implements Movable, Drawable {
 
     // Movement
     private double currentSpeed;
-    private Point2D.Double location;
+    private DoublePoint location;
     private Direction direction = Direction.NORTH;
 
     public Vehicle(int nrDoors, Color color, double enginePower, String modelName, int weight, int length, int width) {
@@ -29,7 +29,7 @@ public abstract class Vehicle implements Movable, Drawable {
         this.weight = weight;
         this.length = length;
         this.width = width;
-        this.location = new Point2D.Double(0, 0);
+        this.location = new DoublePoint(0, 0);
         stopEngine();
     }
 
@@ -78,13 +78,18 @@ public abstract class Vehicle implements Movable, Drawable {
         return direction;
     }
 
-    public void setLocation(double newX, double newY) {
-        location.x = newX;
-        location.y = newY;
+    public void setLocation(double x, double y) {
+        location = new DoublePoint(x, y);
     }
 
-    public Point2D.Double getLocation() {
-        return new Point2D.Double(location.x, location.y);
+    @Override
+    public void setLocation(DoublePoint point) {
+        location = new DoublePoint(point);
+    }
+
+    @Override
+    public DoublePoint getLocation() {
+        return new DoublePoint(location);
     }
 
     public void startEngine() {
@@ -128,10 +133,10 @@ public abstract class Vehicle implements Movable, Drawable {
         double speed = getCurrentSpeed();
 
         switch (direction) {
-            case NORTH -> location.y += speed;
-            case EAST -> location.x += speed;
-            case SOUTH -> location.y -= speed;
-            case WEST -> location.x -= speed;
+            case NORTH -> location = location.translate(0, speed);
+            case EAST -> location = location.translate(speed, 0);
+            case SOUTH -> location = location.translate(0, -speed);
+            case WEST -> location = location.translate(-speed, 0);
         }
     }
 

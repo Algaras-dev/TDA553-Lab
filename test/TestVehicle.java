@@ -5,12 +5,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.awt.Color;
-import java.awt.geom.Point2D;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import src.model.vehicles.Direction;
+import src.utils.DoublePoint;
 import test.mocks.MockVehicle;
 
 public class TestVehicle {
@@ -61,7 +61,7 @@ public class TestVehicle {
 
     @Test
     void testGetLocation() {
-        assertEquals(new Point2D.Double(0, 0), car.getLocation());
+        assertEquals(new DoublePoint(0, 0), car.getLocation());
     }
 
     // Testing control methods
@@ -147,19 +147,19 @@ public class TestVehicle {
     void testMove() {
         car.startEngine();
         car.move();
-        assertEquals(new Point2D.Double(0, car.getCurrentSpeed()), car.getLocation());
+        assertEquals(new DoublePoint(0, car.getCurrentSpeed()), car.getLocation());
 
         car.turnRight();
         car.move();
-        assertEquals(new Point2D.Double(car.getCurrentSpeed(), car.getCurrentSpeed()), car.getLocation());
+        assertEquals(new DoublePoint(car.getCurrentSpeed(), car.getCurrentSpeed()), car.getLocation());
 
         car.turnRight();
         car.move();
-        assertEquals(new Point2D.Double(car.getCurrentSpeed(), 0), car.getLocation());
+        assertEquals(new DoublePoint(car.getCurrentSpeed(), 0), car.getLocation());
 
         car.turnRight();
         car.move();
-        assertEquals(new Point2D.Double(0, 0), car.getLocation());
+        assertEquals(new DoublePoint(0, 0), car.getLocation());
 
     }
 }
