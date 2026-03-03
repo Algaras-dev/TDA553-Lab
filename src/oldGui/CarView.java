@@ -26,7 +26,6 @@ import javax.swing.event.ChangeListener;
  * It communicates with the Controller by calling methods of it when an action
  * fires of in
  * each of it's components.
- * TODO: Write more actionListeners and wire the rest of the buttons
  **/
 
 public class CarView extends JFrame {
@@ -62,9 +61,7 @@ public class CarView extends JFrame {
         initComponents(framename);
     }
 
-    // Sets everything in place and fits everything
-    // TODO: Take a good look and make sure you understand how these methods and
-    // components work
+    // Sets everything in place and fits everything components work
     private void initComponents(String title) {
 
         this.setTitle(title);
