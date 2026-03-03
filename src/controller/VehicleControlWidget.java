@@ -3,9 +3,7 @@ package src.controller;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.BorderLayout;
-import java.awt.FlowLayout;
 import java.awt.GridLayout;
-import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -17,8 +15,8 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 public class VehicleControlWidget extends JPanel {
-    private static final int X = 800;
-    private static final int Y = 240;
+    private int X;
+    private int Y;
 
     JPanel controlPanel = new JPanel();
 
@@ -37,7 +35,10 @@ public class VehicleControlWidget extends JPanel {
     JButton startButton = new JButton("Start all cars");
     JButton stopButton = new JButton("Stop all cars");
 
-    public VehicleControlWidget() {
+    public VehicleControlWidget(int X, int Y) {
+        this.X = X;
+        this.Y = Y;
+
         initComponents();
     }
 
@@ -68,18 +69,18 @@ public class VehicleControlWidget extends JPanel {
         controlPanel.add(brakeButton, 3);
         controlPanel.add(turboOffButton, 4);
         controlPanel.add(lowerBedButton, 5);
-        controlPanel.setPreferredSize(new Dimension((X / 2) + 4, 200));
+        controlPanel.setPreferredSize(new Dimension((X / 2) + 4, Y - 40));
         this.add(controlPanel);
         controlPanel.setBackground(Color.CYAN);
 
         startButton.setBackground(Color.blue);
         startButton.setForeground(Color.green);
-        startButton.setPreferredSize(new Dimension(X / 5 - 15, 200));
+        startButton.setPreferredSize(new Dimension(X / 5 - 15, Y - 40));
         this.add(startButton);
 
         stopButton.setBackground(Color.red);
         stopButton.setForeground(Color.black);
-        stopButton.setPreferredSize(new Dimension(X / 5 - 15, 200));
+        stopButton.setPreferredSize(new Dimension(X / 5 - 15, Y - 40));
         this.add(stopButton);
 
     }

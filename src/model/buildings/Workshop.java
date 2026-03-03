@@ -10,7 +10,7 @@ public class Workshop<C extends Car> implements Drawable {
     private int maxCars;
     private ArrayList<C> carList;
 
-    private Class<C> workshopType;
+    private final Class<C> workshopType;
 
     private DoublePoint location;
 

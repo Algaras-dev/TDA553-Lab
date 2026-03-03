@@ -9,8 +9,9 @@ public class VehicleController {
     private VehicleControlWidget widget;
     private WorldModel model;
 
-    public VehicleController() {
-        widget = new VehicleControlWidget();
+    public VehicleController(WorldModel model, VehicleControlWidget widget) {
+        this.model = model;
+        this.widget = widget;
         bindListeners();
     }
 

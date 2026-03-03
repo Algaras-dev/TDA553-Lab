@@ -7,9 +7,12 @@ import java.util.List;
 
 import javax.swing.Timer;
 
-import src.model.Drawable;
+import src.controller.VehicleControlWidget;
+import src.controller.VehicleController;
 import src.model.WorldModel;
+import src.model.buildings.Workshop;
 import src.model.vehicles.Vehicle;
+import src.model.vehicles.cars.Car;
 import src.model.vehicles.cars.Saab95;
 import src.model.vehicles.cars.Volvo240;
 import src.model.vehicles.trucks.Scania;
@@ -24,20 +27,29 @@ public class CarGame {
 
     public static void main(String[] args) {
 
-        // Objects in frame
-        List<Vehicle> objects = new ArrayList<>();
-        objects.add(new Volvo240());
-        objects.getLast().setLocation(300, 0);
+        // Vehicle objects in frame
+        List<Vehicle> vehicles = new ArrayList<>();
+        vehicles.add(new Volvo240());
+        vehicles.getLast().setLocation(300, 0);
 
-        objects.add(new Saab95());
-        objects.getLast().setLocation(0, 100);
+        vehicles.add(new Saab95());
+        vehicles.getLast().setLocation(0, 100);
 
-        objects.add(new Scania());
-        objects.getLast().setLocation(0, 200);
+        vehicles.add(new Scania());
+        vehicles.getLast().setLocation(0, 200);
 
-        WorldModel model = new WorldModel();
+        // Workshop objects in frame
+        List<Workshop<? extends Car>> workshops = new ArrayList<>();
+        workshops.add(new Workshop<>(10, 300, 300, Volvo240.class));
+
+        WorldModel model = new WorldModel(vehicles, workshops);
+
         // View(s)
+        MainFrame frame = new MainFrame("CarGame");
+
         // Controller(s)
+        VehicleControlWidget controlWidget = frame.getControlWidget();
+        VehicleController controller = new VehicleController(model, controlWidget);
 
         ActionListener drawFrame = new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
