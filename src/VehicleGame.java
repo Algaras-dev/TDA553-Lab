@@ -17,7 +17,7 @@ import src.view.MainFrame;
 import src.view.VehicleControlPanel;
 import src.view.WorldPanel;
 
-public class CarGame {
+public class VehicleGame {
 
     public static void main(String[] args) {
         // Set frame and world size
