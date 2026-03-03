@@ -1,9 +1,10 @@
-package src.controller;
+package src.view;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.BorderLayout;
 import java.awt.GridLayout;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -14,9 +15,9 @@ import javax.swing.SpinnerNumberModel;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-public class VehicleControlWidget extends JPanel {
-    private int X;
-    private int Y;
+public class VehicleControlPanel extends JPanel implements VehicleControls {
+    private final int X;
+    private final int Y;
 
     JPanel controlPanel = new JPanel();
 
@@ -35,7 +36,7 @@ public class VehicleControlWidget extends JPanel {
     JButton startButton = new JButton("Start all cars");
     JButton stopButton = new JButton("Stop all cars");
 
-    public VehicleControlWidget(int X, int Y) {
+    public VehicleControlPanel(int X, int Y) {
         this.X = X;
         this.Y = Y;
 
@@ -85,6 +86,47 @@ public class VehicleControlWidget extends JPanel {
 
     }
 
+    @Override
+    public void addGasListener(ActionListener l) {
+        gasButton.addActionListener(l);
+    }
+
+    @Override
+    public void addBrakeListener(ActionListener l) {
+        brakeButton.addActionListener(l);
+    }
+
+    @Override
+    public void addStartListener(ActionListener l) {
+        startButton.addActionListener(l);
+    }
+
+    @Override
+    public void addStopListener(ActionListener l) {
+        stopButton.addActionListener(l);
+    }
+
+    @Override
+    public void addTurboOnListener(ActionListener l) {
+        turboOnButton.addActionListener(l);
+    }
+
+    @Override
+    public void addTurboOffListener(ActionListener l) {
+        turboOffButton.addActionListener(l);
+    }
+
+    @Override
+    public void addLiftBedListener(ActionListener l) {
+        liftBedButton.addActionListener(l);
+    }
+
+    @Override
+    public void addLowerBedListener(ActionListener l) {
+        lowerBedButton.addActionListener(l);
+    }
+
+    @Override
     public double getGasAmount() {
         return gasAmount;
     }

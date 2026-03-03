@@ -4,12 +4,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import src.model.WorldModel;
+import src.view.VehicleControls;
 
 public class VehicleController {
-    private VehicleControlWidget widget;
+    private VehicleControls widget;
     private WorldModel model;
 
-    public VehicleController(WorldModel model, VehicleControlWidget widget) {
+    public VehicleController(WorldModel model, VehicleControls widget) {
         this.model = model;
         this.widget = widget;
         bindListeners();
@@ -19,56 +20,56 @@ public class VehicleController {
      * Bind all buttons to actionlisteners
      */
     private void bindListeners() {
-        widget.gasButton.addActionListener(new ActionListener() {
+        widget.addGasListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 model.vehicleManager.gas(widget.getGasAmount());
             }
         });
 
-        widget.brakeButton.addActionListener(new ActionListener() {
+        widget.addBrakeListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 model.vehicleManager.brake(widget.getGasAmount());
             }
         });
 
-        widget.startButton.addActionListener(new ActionListener() {
+        widget.addStartListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 model.vehicleManager.startAll();
             }
         });
 
-        widget.stopButton.addActionListener(new ActionListener() {
+        widget.addStopListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 model.vehicleManager.stopAll();
             }
         });
 
-        widget.turboOnButton.addActionListener(new ActionListener() {
+        widget.addTurboOnListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 model.vehicleManager.turboOn();
             }
         });
 
-        widget.turboOffButton.addActionListener(new ActionListener() {
+        widget.addTurboOffListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 model.vehicleManager.turboOff();
             }
         });
 
-        widget.liftBedButton.addActionListener(new ActionListener() {
+        widget.addLiftBedListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 model.vehicleManager.liftBed();
             }
         });
 
-        widget.lowerBedButton.addActionListener(new ActionListener() {
+        widget.addLowerBedListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 model.vehicleManager.lowerBed();

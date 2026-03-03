@@ -1,5 +1,6 @@
 package src.utils;
 
+import java.awt.Dimension;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -9,11 +10,13 @@ import java.util.Map;
 import javax.imageio.ImageIO;
 
 public class ImageMapper {
-    /**
-     * Create map of images to names
-     */
-    public static Map map() {
-        Map<String, BufferedImage> map = new HashMap<>();
+    private static Map<String, BufferedImage> imageMap;
+    private static Map<String, Dimension> imageSizeMap;
+
+    static {
+        imageMap = new HashMap<>();
+        imageSizeMap = new HashMap<>();
+
         try {
             File[] files = new File("pics").listFiles();
             if (files != null) {
@@ -23,14 +26,21 @@ public class ImageMapper {
                     String name = file.getName().substring(0, file.getName().lastIndexOf('.'));
                     BufferedImage image = ImageIO.read(file);
 
-                    map.put(name, image);
+                    imageMap.put(name, image);
+                    imageSizeMap.put(name, new Dimension(image.getWidth(), image.getHeight()));
                 }
 
             }
         } catch (IOException ex) {
             ex.printStackTrace();
         }
+    }
 
-        return map;
+    public static BufferedImage getImage(String name) {
+        return imageMap.get(name);
+    }
+
+    public static Dimension getImageSize(String name) {
+        return imageSizeMap.get(name);
     }
 }

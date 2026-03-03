@@ -1,13 +1,10 @@
 package src;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.Timer;
-
-import src.controller.VehicleControlWidget;
+import src.controller.TimeController;
 import src.controller.VehicleController;
 import src.model.WorldModel;
 import src.model.buildings.Workshop;
@@ -16,18 +13,21 @@ import src.model.vehicles.cars.Car;
 import src.model.vehicles.cars.Saab95;
 import src.model.vehicles.cars.Volvo240;
 import src.model.vehicles.trucks.Scania;
+import src.view.MainFrame;
+import src.view.VehicleControlPanel;
+import src.view.WorldPanel;
 
 public class CarGame {
 
-    // The delay (ms) corresponds to 20 updates a sec (hz)
-    private final static int delay = 50;
-    // The timer is started with a listener (see below) that executes the statements
-    // each step between delays.
-    private static Timer timer;
-
     public static void main(String[] args) {
+        // Set frame and world size
+        final int width = 800;
+        final int height = 800;
+        final int worldPanelHeight = height * 2 / 3;
+        final int controlWidgetHeight = height * 1 / 3;
 
-        // Vehicle objects in frame
+        // * Model(s)
+        // Vehicle objects in frame (Change to Factory!)
         List<Vehicle> vehicles = new ArrayList<>();
         vehicles.add(new Volvo240());
         vehicles.getLast().setLocation(300, 0);
@@ -42,23 +42,22 @@ public class CarGame {
         List<Workshop<? extends Car>> workshops = new ArrayList<>();
         workshops.add(new Workshop<>(10, 300, 300, Volvo240.class));
 
-        WorldModel model = new WorldModel(vehicles, workshops);
+        WorldModel model = new WorldModel(new Dimension(width, worldPanelHeight), vehicles, workshops);
 
-        // View(s)
-        MainFrame frame = new MainFrame("CarGame");
+        // * View(s)
+        MainFrame frame = new MainFrame(width, height, "CarGame");
+        WorldPanel worldPanel = new WorldPanel(width, worldPanelHeight);
+        VehicleControlPanel controlWidget = new VehicleControlPanel(width, controlWidgetHeight);
 
-        // Controller(s)
-        VehicleControlWidget controlWidget = frame.getControlWidget();
+        // Build view
+        frame.add(worldPanel);
+        frame.add(controlWidget);
+        frame.display();
+
+        // * Controller(s)
         VehicleController controller = new VehicleController(model, controlWidget);
+        TimeController timeController = new TimeController(50, model, worldPanel);
 
-        ActionListener drawFrame = new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                model.onTick();
-            }
-        };
-
-        timer = new Timer(delay, drawFrame);
-
+        timeController.start();
     }
-
 }

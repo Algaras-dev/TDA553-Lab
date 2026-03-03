@@ -62,6 +62,10 @@ public class Workshop<C extends Car> implements Drawable {
         location = new DoublePoint(newLocation);
     }
 
+    public ArrayList<C> getCarList() {
+        return carList;
+    }
+
     public Class<C> getType() {
         return workshopType;
     }
@@ -71,7 +75,7 @@ public class Workshop<C extends Car> implements Drawable {
     }
 
     public boolean tryAddCar(Car car) {
-        if (acceptsCar(car)) {
+        if (acceptsCar(car) && getCarList().size() < maxCars) {
             carList.add(workshopType.cast(car));
 
             return true;

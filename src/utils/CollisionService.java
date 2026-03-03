@@ -1,13 +1,12 @@
-package src.oldGui;
+package src.utils;
 
 import java.awt.Dimension;
 import java.awt.geom.Rectangle2D;
 
 import javax.swing.JPanel;
 
-public class Collisions {
-    public static boolean collidesWithEdges(JPanel drawPanel, Rectangle2D.Double bounds) {
-        Dimension frameSize = drawPanel.getSize();
+public class CollisionService {
+    public static boolean collidesWithEdges(Dimension frameSize, Rectangle2D.Double bounds) {
 
         if (bounds.y < 0
                 || bounds.y + bounds.height > frameSize.height
