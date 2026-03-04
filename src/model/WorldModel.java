@@ -2,10 +2,8 @@ package src.model;
 
 import java.awt.Dimension;
 import java.awt.geom.Rectangle2D;
-import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import src.model.buildings.Workshop;
 import src.model.buildings.WorkshopManager;
@@ -14,7 +12,6 @@ import src.model.vehicles.VehicleManager;
 import src.model.vehicles.cars.Car;
 import src.utils.BoundingService;
 import src.utils.CollisionService;
-import src.utils.ImageMapper;
 
 public class WorldModel {
     private Dimension worldSize;

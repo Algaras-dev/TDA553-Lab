@@ -1,14 +1,13 @@
 package src.model.vehicles;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import src.model.vehicles.cars.Saab95;
 import src.model.vehicles.trucks.Scania;
 
-import java.util.ArrayList;
-
 public class VehicleManager {
-    private ArrayList<Vehicle> vehicles = new ArrayList<>();
+    private List<Vehicle> vehicles = new ArrayList<>();
 
     public List<Vehicle> getVehicles() {
         return new ArrayList<>(vehicles);

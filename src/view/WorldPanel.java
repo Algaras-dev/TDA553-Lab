@@ -3,10 +3,8 @@ package src.view;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import javax.swing.JPanel;
 
@@ -14,14 +12,9 @@ import src.model.Drawable;
 import src.utils.ImageMapper;
 
 public class WorldPanel extends JPanel {
-    private int X;
-    private int Y;
     List<Drawable> drawableObjects = new ArrayList<>();
 
     public WorldPanel(int X, int Y) {
-        this.X = X;
-        this.Y = Y;
-
         this.setDoubleBuffered(true);
         this.setPreferredSize(new Dimension(X, Y));
         this.setBackground(Color.green);

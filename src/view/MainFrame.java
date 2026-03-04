@@ -7,13 +7,7 @@ import java.awt.Toolkit;
 import javax.swing.JFrame;
 
 public class MainFrame extends JFrame {
-    private int X;
-    private int Y;
-
     public MainFrame(int X, int Y, String frameName) {
-        this.X = X;
-        this.Y = Y;
-
         this.setTitle(frameName);
 
         this.setPreferredSize(new Dimension(X, Y));

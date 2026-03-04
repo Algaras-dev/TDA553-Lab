@@ -3,8 +3,6 @@ package src.utils;
 import java.awt.Dimension;
 import java.awt.geom.Rectangle2D;
 
-import javax.swing.JPanel;
-
 public class CollisionService {
     public static boolean collidesWithEdges(Dimension frameSize, Rectangle2D.Double bounds) {
 

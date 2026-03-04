@@ -1,15 +1,14 @@
 package src.model.buildings;
 
+import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 import java.util.List;
-
-import java.awt.geom.Rectangle2D;
 
 import src.model.vehicles.cars.Car;
 import src.utils.BoundingService;
 
 public class WorkshopManager {
-    private ArrayList<Workshop<? extends Car>> workshops = new ArrayList<>();
+    private List<Workshop<? extends Car>> workshops = new ArrayList<>();
 
     public List<Workshop<? extends Car>> getWorkshops() {
         return List.copyOf(workshops);
