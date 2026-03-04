@@ -20,7 +20,7 @@ public class VehicleFactory {
         SCANIA("Scania", Scania::new),
         CARTRANSPORT("Car Transport", CarTransport::new),
 
-        //* Random has to be the last one
+        // * Random has to be the last one
         RANDOM("Random Vehicle", () -> {
             final int idx = new Random().nextInt(Type.values().length - 1);
 
@@ -29,6 +29,7 @@ public class VehicleFactory {
 
         private final String label;
         private final Supplier<Vehicle> constructor;
+        private Class<? extends Vehicle> classType;
 
         Type(String label, Supplier<Vehicle> constructor) {
             this.label = label;
@@ -40,7 +41,10 @@ public class VehicleFactory {
         }
 
         public Class<? extends Vehicle> getInstanceClass() {
-            return createInstance().getClass();
+            if (classType == null) {
+                classType = createInstance().getClass();
+            }
+            return classType;
         }
 
         @Override
