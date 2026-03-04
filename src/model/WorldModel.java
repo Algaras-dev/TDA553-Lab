@@ -11,7 +11,6 @@ import src.model.vehicles.Vehicle;
 import src.model.vehicles.VehicleManager;
 import src.model.vehicles.cars.Car;
 import src.utils.BoundingService;
-import src.utils.CollisionService;
 
 public class WorldModel {
     private Dimension worldSize;
@@ -38,15 +37,15 @@ public class WorldModel {
 
     public void update() {
         for (Vehicle vehicle : vehicleManager.getVehicles()) {
-            Rectangle2D.Double vehicleBounds = BoundingService.getBounds(vehicle);
 
-            if (CollisionService.collidesWithEdges(worldSize, vehicleBounds)) {
+            if (BoundingService.collidesWithFrameBounds(worldSize, vehicle)) {
                 vehicle.turnAround();
             }
 
             vehicle.move();
 
             if (vehicle instanceof Car) {
+                Rectangle2D.Double vehicleBounds = BoundingService.getBounds(vehicle);
                 boolean added = workshopManager.tryEnterWorkshop((Car) vehicle, vehicleBounds);
 
                 if (added) {

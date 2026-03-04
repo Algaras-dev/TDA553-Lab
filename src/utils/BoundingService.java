@@ -9,14 +9,26 @@ public class BoundingService {
     public static Rectangle2D.Double getBounds(Drawable object) {
         DoublePoint location = object.getLocation();
         Dimension size = ImageMapper.getImageSize(object.getName());
+
         return new Rectangle2D.Double(
                 location.x, location.y, size.width, size.height);
     }
-}
 
-// Old:
-/*
- * private Rectangle2D.Double getBounds(Drawable item) {
- * 
- * }
- */
+    public static boolean collidesWithFrameBounds(Dimension frameSize, Drawable object) {
+        Rectangle2D.Double objectBounds = getBounds(object);
+
+        return collidesWithFrameBounds(frameSize, objectBounds);
+    }
+
+    public static boolean collidesWithFrameBounds(Dimension frameSize, Rectangle2D.Double bounds) {
+
+        if (bounds.y < 0
+                || bounds.y + bounds.height > frameSize.height
+                || bounds.x < 0
+                || bounds.x + bounds.width > frameSize.width) {
+            return true;
+        }
+
+        return false;
+    }
+}
