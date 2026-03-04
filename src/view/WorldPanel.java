@@ -12,7 +12,7 @@ import src.model.Drawable;
 import src.utils.ImageMapper;
 
 public class WorldPanel extends JPanel {
-    List<Drawable> drawableObjects = new ArrayList<>();
+    private List<Drawable> drawableObjects = new ArrayList<>();
 
     public WorldPanel(int X, int Y) {
         this.setDoubleBuffered(true);
