@@ -1,5 +1,8 @@
 package src.model.vehicles;
 
+import java.util.Random;
+import java.util.function.Supplier;
+
 import src.model.vehicles.cars.Saab95;
 import src.model.vehicles.cars.Volvo240;
 import src.model.vehicles.trucks.CarTransport;
@@ -12,20 +15,37 @@ public class VehicleFactory {
      * Types of vehicles the factory can make
      */
     public enum Type {
-        SAAB95("Saab 95"),
-        VOLVO240("Volvo 240"),
-        SCANIA("Scania"),
-        CARTRANSPORT("Car Transport");
+        SAAB95("Saab 95", Saab95::new),
+        VOLVO240("Volvo 240", Volvo240::new),
+        SCANIA("Scania", Scania::new),
+        CARTRANSPORT("Car Transport", CarTransport::new),
 
-        private final String name;
+        //* Random has to be the last one
+        RANDOM("Random Vehicle", () -> {
+            final int idx = new Random().nextInt(Type.values().length - 1);
 
-        Type(String displayName) {
-            name = displayName;
+            return Type.values()[idx].createInstance();
+        });
+
+        private final String label;
+        private final Supplier<Vehicle> constructor;
+
+        Type(String label, Supplier<Vehicle> constructor) {
+            this.label = label;
+            this.constructor = constructor;
+        }
+
+        public Vehicle createInstance() {
+            return constructor.get();
+        }
+
+        public Class<? extends Vehicle> getInstanceClass() {
+            return createInstance().getClass();
         }
 
         @Override
         public String toString() {
-            return name;
+            return label;
         }
     }
 

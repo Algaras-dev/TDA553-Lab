@@ -10,18 +10,21 @@ import src.utils.BoundingService;
 
 public class VehicleManager {
     private List<Vehicle> vehicles = new ArrayList<>();
+    private final int limit = 9;
 
     public List<Vehicle> getVehicles() {
         return new ArrayList<>(vehicles);
     }
 
     public void add(Vehicle vehicle) {
+        if (vehicles.size() < limit) {
         vehicles.add(vehicle);
+        }
     }
 
     public void add(List<Vehicle> vehicles) {
         for (Vehicle vehicle : vehicles) {
-            this.vehicles.add(vehicle);
+            add(vehicle);
         }
     }
 

@@ -20,7 +20,7 @@ public class WorkshopManager {
 
     public void add(List<Workshop<? extends Car>> workshops) {
         for (Workshop<? extends Car> workshop : workshops) {
-            this.workshops.add(workshop);
+            add(workshop);
         }
     }
 

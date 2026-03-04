@@ -8,12 +8,15 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerModel;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+
+import src.model.vehicles.VehicleFactory.Type;
 
 public class VehicleControlPanel extends JPanel implements VehicleControls {
     private final int X;
@@ -89,6 +92,32 @@ public class VehicleControlPanel extends JPanel implements VehicleControls {
         stopButton.setPreferredSize(new Dimension(X / 5 - 15, Y - 40));
         this.add(stopButton);
 
+    }
+
+    public Type addVehiclePopup(Type[] options) {
+        Type choice = (Type) JOptionPane.showInputDialog(
+            this,
+            "Choose vehicle type:",
+            "Add Vehicle",
+            JOptionPane.PLAIN_MESSAGE,
+            null,
+            options,
+            options.length > 0 ? options[0] : null
+        );
+        return choice;
+    }
+
+    public Type removeVehiclePopup(Type[] options) {
+        Type choice = (Type) JOptionPane.showInputDialog(
+            this,
+            "Choose vehicle type:",
+            "Remove Vehicle",
+            JOptionPane.PLAIN_MESSAGE,
+            null,
+            options,
+            options.length > 0 ? options[0] : null
+        );
+        return choice;
     }
 
     @Override

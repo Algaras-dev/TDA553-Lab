@@ -4,6 +4,8 @@ import java.util.List;
 
 import src.model.Drawable;
 import src.model.WorldModel;
+import src.model.vehicles.Vehicle;
+import src.model.vehicles.VehicleFactory;
 import src.view.VehicleControls;
 
 public class VehicleController {
@@ -42,6 +44,23 @@ public class VehicleController {
 
         controlPanel.addLowerBedListener(_ -> model.vehicleManager.lowerBed());
 
-        // controlPanel.addAddCarListener(_ -> );
+        controlPanel.addAddCarListener(_ -> {
+            VehicleFactory.Type chosenType = controlPanel.addVehiclePopup(VehicleFactory.getTypes());
+            if (chosenType != null) {
+                model.vehicleManager.add(chosenType.createInstance());
+            }
+        });
+
+        controlPanel.addRemoveCarListener(_ -> {
+            VehicleFactory.Type chosenType = controlPanel.removeVehiclePopup(VehicleFactory.getTypes());
+            if (chosenType != null) {
+                for (Vehicle vehicle : model.vehicleManager.getVehicles()) {
+                    if (chosenType.getInstanceClass().equals(vehicle.getClass())) {
+                        model.vehicleManager.remove(vehicle);
+                        return;
+                    }
+                }
+            }
+        });
     }
 }

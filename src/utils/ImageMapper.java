@@ -10,8 +10,10 @@ import java.util.Map;
 import javax.imageio.ImageIO;
 
 public class ImageMapper {
-    private static Map<String, BufferedImage> imageMap = new HashMap<>();
-    private static Map<String, Dimension> imageSizeMap = new HashMap<>();
+    private static final Map<String, BufferedImage> imageMap = new HashMap<>();
+    private static final Map<String, Dimension> imageSizeMap = new HashMap<>();
+
+    private static final String missingImage = "missing";
 
     static {
         try {
@@ -34,10 +36,10 @@ public class ImageMapper {
     }
 
     public static BufferedImage getImage(String name) {
-        return imageMap.get(name);
+        return imageMap.getOrDefault(name, imageMap.get(missingImage));
     }
 
     public static Dimension getImageSize(String name) {
-        return imageSizeMap.get(name);
+        return imageSizeMap.getOrDefault(name, new Dimension(0, 0));
     }
 }

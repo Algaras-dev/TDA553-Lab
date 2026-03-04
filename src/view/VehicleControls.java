@@ -2,6 +2,8 @@ package src.view;
 
 import java.awt.event.ActionListener;
 
+import src.model.vehicles.VehicleFactory.Type;
+
 public interface VehicleControls {
     public void addGasListener(ActionListener l);
 
@@ -22,6 +24,10 @@ public interface VehicleControls {
     public void addAddCarListener(ActionListener l);
 
     public void addRemoveCarListener(ActionListener l);
+
+    public Type addVehiclePopup(Type[] options);
+
+    public Type removeVehiclePopup(Type[] options);
 
     public double getGasAmount();
 
