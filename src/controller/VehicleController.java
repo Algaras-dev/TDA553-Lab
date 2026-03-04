@@ -1,5 +1,8 @@
 package src.controller;
 
+import java.util.List;
+
+import src.model.Drawable;
 import src.model.WorldModel;
 import src.view.VehicleControls;
 
@@ -9,6 +12,14 @@ public class VehicleController {
     public VehicleController(WorldModel model, VehicleControls controlPanel) {
         this.model = model;
         bindListeners(controlPanel);
+    }
+
+    void update() {
+        model.update();
+    }
+
+    List<Drawable> getDrawableObjects() {
+        return model.getDrawableObjects();
     }
 
     /**

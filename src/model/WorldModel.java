@@ -1,30 +1,22 @@
 package src.model;
 
 import java.awt.Dimension;
-import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 import java.util.List;
 
-import src.model.buildings.Workshop;
 import src.model.buildings.WorkshopManager;
 import src.model.vehicles.Vehicle;
 import src.model.vehicles.VehicleManager;
-import src.model.vehicles.cars.Car;
-import src.utils.BoundingService;
 
 public class WorldModel {
     private Dimension worldSize;
-    public VehicleManager vehicleManager = new VehicleManager();
-    public WorkshopManager workshopManager = new WorkshopManager();
+    public VehicleManager vehicleManager;
+    public WorkshopManager workshopManager;
 
-    public WorldModel(Dimension worldSize, List<Vehicle> vehicles, List<Workshop<? extends Car>> workshops) {
+    public WorldModel(Dimension worldSize, VehicleManager vehicleManager, WorkshopManager workshopManager) {
         this.worldSize = worldSize;
-        for (Vehicle vehicle : vehicles) {
-            vehicleManager.addVehicle(vehicle);
-        }
-        for (Workshop<? extends Car> workshop : workshops) {
-            workshopManager.addWorkshop(workshop);
-        }
+        this.vehicleManager = vehicleManager;
+        this.workshopManager = workshopManager;
     }
 
     public List<Drawable> getDrawableObjects() {
@@ -36,22 +28,8 @@ public class WorldModel {
     }
 
     public void update() {
-        for (Vehicle vehicle : vehicleManager.getVehicles()) {
-
-            if (BoundingService.collidesWithFrameBounds(worldSize, vehicle)) {
-                vehicle.turnAround();
-            }
-
-            vehicle.move();
-
-            if (vehicle instanceof Car) {
-                Rectangle2D.Double vehicleBounds = BoundingService.getBounds(vehicle);
-                boolean added = workshopManager.tryEnterWorkshop((Car) vehicle, vehicleBounds);
-
-                if (added) {
-                    vehicleManager.removeVehicle(vehicle);
-                }
-            }
-        }
+        vehicleManager.move(worldSize);
+        List<Vehicle> toRemove = workshopManager.tryEnterWorkshop(vehicleManager.getVehicles());
+        vehicleManager.remove(toRemove);
     }
 }

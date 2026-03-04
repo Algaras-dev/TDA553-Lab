@@ -31,4 +31,11 @@ public class BoundingService {
 
         return false;
     }
+
+    public static boolean objectsIntersect(Drawable object1, Drawable object2) {
+        Rectangle2D.Double object1Bounds = getBounds(object1);
+        Rectangle2D.Double object2Bounds = getBounds(object2);
+
+        return object1Bounds.intersects(object2Bounds);
+    }
 }

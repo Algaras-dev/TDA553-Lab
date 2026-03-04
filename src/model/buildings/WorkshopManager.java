@@ -1,9 +1,9 @@
 package src.model.buildings;
 
-import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 import java.util.List;
 
+import src.model.vehicles.Vehicle;
 import src.model.vehicles.cars.Car;
 import src.utils.BoundingService;
 
@@ -14,20 +14,24 @@ public class WorkshopManager {
         return List.copyOf(workshops);
     }
 
-    public void addWorkshop(Workshop<? extends Car> workshop) {
+    public void add(Workshop<? extends Car> workshop) {
         workshops.add(workshop);
+    }
+
+    public void add(List<Workshop<? extends Car>> workshops) {
+        for (Workshop<? extends Car> workshop : workshops) {
+            this.workshops.add(workshop);
+        }
     }
 
     public void removeWorkshop(Workshop<? extends Car> workshop) {
         workshops.remove(workshop);
     }
 
-    public boolean tryEnterWorkshop(Car car, Rectangle2D.Double vehicleBounds) {
+    public boolean tryEnterWorkshop(Car car) {
         for (Workshop<? extends Car> workshop : workshops) {
-            Rectangle2D.Double workshopBounds = BoundingService.getBounds(workshop);
 
-            // Check if vehicle intersects with workshop (proximity check)
-            if (vehicleBounds.intersects(workshopBounds)) {
+            if (BoundingService.objectsIntersect(car, workshop)) {
                 // Check if workshop accepts the vehicle type and workshop is not full
                 boolean added = workshop.tryAddCar(car);
 
@@ -38,5 +42,21 @@ public class WorkshopManager {
             }
         }
         return false;
+    }
+
+    public List<Vehicle> tryEnterWorkshop(List<Vehicle> vehicles) {
+        List<Vehicle> toRemove = new ArrayList<>();
+
+        for (Vehicle vehicle : vehicles) {
+            if (vehicle instanceof Car) {
+                boolean added = tryEnterWorkshop((Car) vehicle);
+
+                if (added) {
+                    toRemove.add(vehicle);
+                }
+            }
+        }
+
+        return toRemove;
     }
 }

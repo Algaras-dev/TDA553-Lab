@@ -2,7 +2,6 @@ package src.controller;
 
 import javax.swing.Timer;
 
-import src.model.WorldModel;
 import src.view.WorldPanel;
 
 public class TimeController {
@@ -13,20 +12,20 @@ public class TimeController {
     // each step between delays.
     private Timer timer;
 
-    private final WorldModel model;
+    private final VehicleController vehicleController; 
     private final WorldPanel panel;
 
-    public TimeController(int delay, WorldModel model, WorldPanel panel) {
+    public TimeController(int delay, VehicleController vehicleController, WorldPanel panel) {
         this.delay = delay;
-        this.model = model;
+        this.vehicleController = vehicleController;
         this.panel = panel;
     }
 
     public void start() {
         timer = new Timer(delay, _ -> {
-            model.update();
+            vehicleController.update();
 
-            panel.updateObjects(model.getDrawableObjects());
+            panel.updateObjects(vehicleController.getDrawableObjects());
             panel.repaint();
         });
         timer.start();

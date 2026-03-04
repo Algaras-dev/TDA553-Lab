@@ -1,10 +1,12 @@
 package src.model.vehicles;
 
+import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.List;
 
 import src.model.vehicles.cars.Saab95;
 import src.model.vehicles.trucks.Scania;
+import src.utils.BoundingService;
 
 public class VehicleManager {
     private List<Vehicle> vehicles = new ArrayList<>();
@@ -13,12 +15,24 @@ public class VehicleManager {
         return new ArrayList<>(vehicles);
     }
 
-    public void addVehicle(Vehicle vehicle) {
+    public void add(Vehicle vehicle) {
         vehicles.add(vehicle);
     }
 
-    public void removeVehicle(Vehicle vehicle) {
+    public void add(List<Vehicle> vehicles) {
+        for (Vehicle vehicle : vehicles) {
+            this.vehicles.add(vehicle);
+        }
+    }
+
+    public void remove(Vehicle vehicle) {
         vehicles.remove(vehicle);
+    }
+
+    public void remove(List<Vehicle> vehicles) {
+        for (Vehicle vehicle : vehicles) {
+            this.vehicles.remove(vehicle);
+        }
     }
 
     public void gas(double amount) {
@@ -74,6 +88,17 @@ public class VehicleManager {
             if (vehicle instanceof Scania) {
                 ((Scania) vehicle).lowerBed(70);
             }
+        }
+    }
+
+    public void move(Dimension worldSize) {
+        for (Vehicle vehicle : getVehicles()) {
+
+            if (BoundingService.collidesWithFrameBounds(worldSize, vehicle)) {
+                vehicle.turnAround();
+            }
+
+            vehicle.move();
         }
     }
 }

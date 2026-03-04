@@ -10,13 +10,10 @@ import java.util.Map;
 import javax.imageio.ImageIO;
 
 public class ImageMapper {
-    private static Map<String, BufferedImage> imageMap;
-    private static Map<String, Dimension> imageSizeMap;
+    private static Map<String, BufferedImage> imageMap = new HashMap<>();
+    private static Map<String, Dimension> imageSizeMap = new HashMap<>();
 
     static {
-        imageMap = new HashMap<>();
-        imageSizeMap = new HashMap<>();
-
         try {
             File[] files = new File("pics").listFiles();
             if (files != null) {
