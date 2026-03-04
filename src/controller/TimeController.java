@@ -1,8 +1,5 @@
 package src.controller;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 import javax.swing.Timer;
 
 import src.model.WorldModel;
@@ -26,16 +23,12 @@ public class TimeController {
     }
 
     public void start() {
-        ActionListener updates = new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                model.update();
+        timer = new Timer(delay, _ -> {
+            model.update();
 
-                panel.updateObjects(model.getDrawableObjects());
-                panel.repaint();
-            }
-        };
-
-        timer = new Timer(delay, updates);
+            panel.updateObjects(model.getDrawableObjects());
+            panel.repaint();
+        });
         timer.start();
     }
 }
