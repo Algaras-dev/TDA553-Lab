@@ -40,6 +40,6 @@ public class ImageMapper {
     }
 
     public static Dimension getImageSize(String name) {
-        return imageSizeMap.getOrDefault(name, new Dimension(0, 0));
+        return imageSizeMap.getOrDefault(name, imageSizeMap.get(missingImage));
     }
 }
