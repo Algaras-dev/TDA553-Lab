@@ -9,10 +9,9 @@ import src.controller.VehicleController;
 import src.model.WorldModel;
 import src.model.buildings.Workshop;
 import src.model.vehicles.Vehicle;
+import src.model.vehicles.VehicleFactory;
 import src.model.vehicles.cars.Car;
-import src.model.vehicles.cars.Saab95;
 import src.model.vehicles.cars.Volvo240;
-import src.model.vehicles.trucks.Scania;
 import src.view.MainFrame;
 import src.view.VehicleControlPanel;
 import src.view.WorldPanel;
@@ -27,16 +26,11 @@ public class VehicleGame {
         final int controlWidgetHeight = height * 1 / 3;
 
         // * Model(s)
-        // Vehicle objects in frame (Change to Factory!)
+        // Vehicle objects in frame
         List<Vehicle> vehicles = new ArrayList<>();
-        vehicles.add(new Volvo240());
-        vehicles.getLast().setLocation(300, 0);
-
-        vehicles.add(new Saab95());
-        vehicles.getLast().setLocation(0, 100);
-
-        vehicles.add(new Scania());
-        vehicles.getLast().setLocation(0, 200);
+        vehicles.add(VehicleFactory.createVolvo240(300, 0));
+        vehicles.add(VehicleFactory.createSaab95(0, 100));
+        vehicles.add(VehicleFactory.createScania(0, 200));
 
         // Workshop objects in frame
         List<Workshop<? extends Car>> workshops = new ArrayList<>();
