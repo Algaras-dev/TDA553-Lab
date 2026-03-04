@@ -41,5 +41,7 @@ public class VehicleController {
         controlPanel.addLiftBedListener(_ -> model.vehicleManager.liftBed());
 
         controlPanel.addLowerBedListener(_ -> model.vehicleManager.lowerBed());
+
+        // controlPanel.addAddCarListener(_ -> );
     }
 }

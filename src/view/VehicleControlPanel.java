@@ -32,6 +32,8 @@ public class VehicleControlPanel extends JPanel implements VehicleControls {
     JButton turboOffButton = new JButton("Saab Turbo off");
     JButton liftBedButton = new JButton("Scania Lift Bed");
     JButton lowerBedButton = new JButton("Lower Lift Bed");
+    JButton addCarButton = new JButton("Add Car");
+    JButton removeCarButton = new JButton("Remove Car");
 
     JButton startButton = new JButton("Start all cars");
     JButton stopButton = new JButton("Stop all cars");
@@ -67,9 +69,12 @@ public class VehicleControlPanel extends JPanel implements VehicleControls {
         controlPanel.add(gasButton, 0);
         controlPanel.add(turboOnButton, 1);
         controlPanel.add(liftBedButton, 2);
-        controlPanel.add(brakeButton, 3);
-        controlPanel.add(turboOffButton, 4);
-        controlPanel.add(lowerBedButton, 5);
+        controlPanel.add(addCarButton, 3);
+        controlPanel.add(brakeButton, 4);
+        controlPanel.add(turboOffButton, 5);
+        controlPanel.add(lowerBedButton, 6);
+        controlPanel.add(removeCarButton, 7);
+
         controlPanel.setPreferredSize(new Dimension((X / 2) + 4, Y - 40));
         this.add(controlPanel);
         controlPanel.setBackground(Color.CYAN);
@@ -124,6 +129,16 @@ public class VehicleControlPanel extends JPanel implements VehicleControls {
     @Override
     public void addLowerBedListener(ActionListener l) {
         lowerBedButton.addActionListener(l);
+    }
+
+    @Override
+    public void addAddCarListener(ActionListener l) {
+        addCarButton.addActionListener(l);
+    }
+
+    @Override
+    public void addRemoveCarListener(ActionListener l) {
+        removeCarButton.addActionListener(l);
     }
 
     @Override

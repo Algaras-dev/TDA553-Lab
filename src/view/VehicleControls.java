@@ -19,6 +19,10 @@ public interface VehicleControls {
 
     public void addLowerBedListener(ActionListener l);
 
+    public void addAddCarListener(ActionListener l);
+
+    public void addRemoveCarListener(ActionListener l);
+
     public double getGasAmount();
 
 }

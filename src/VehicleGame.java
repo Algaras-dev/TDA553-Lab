@@ -22,7 +22,7 @@ public class VehicleGame {
 
     public static void main(String[] args) {
         // Set frame and world size
-        final int width = 800;
+        final int width = 1000;
         final int height = 800;
         final int worldPanelHeight = height * 2 / 3;
         final int controlWidgetHeight = height * 1 / 3;

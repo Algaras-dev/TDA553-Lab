@@ -7,6 +7,32 @@ import src.model.vehicles.trucks.Scania;
 import src.utils.DoublePoint;
 
 public class VehicleFactory {
+
+    /**
+     * Types of vehicles the factory can make
+     */
+    public enum Type {
+        SAAB95("Saab 95"),
+        VOLVO240("Volvo 240"),
+        SCANIA("Scania"),
+        CARTRANSPORT("Car Transport");
+
+        private final String name;
+
+        Type(String displayName) {
+            name = displayName;
+        }
+
+        @Override
+        public String toString() {
+            return name;
+        }
+    }
+
+    public static Type[] getTypes() {
+        return Type.values();
+    }
+
     public static Vehicle createVolvo240(double x, double y) {
         Vehicle v = new Volvo240();
         v.setLocation(new DoublePoint(x, y));
