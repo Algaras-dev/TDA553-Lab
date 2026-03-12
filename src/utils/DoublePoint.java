@@ -15,12 +15,31 @@ public class DoublePoint {
         this.y = point.y;
     }
 
-
     /**
      * Translate point relatively
+     * 
      * @return moved point
      */
     public DoublePoint translate(double x, double y) {
         return new DoublePoint(this.x + x, this.y + y);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this)
+            return true;
+
+        if (obj == null || getClass() != obj.getClass())
+            return false;
+
+        DoublePoint other = (DoublePoint) obj;
+
+        return Double.compare(other.x, x) == 0 &&
+                Double.compare(other.y, y) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        return java.util.Objects.hash(x, y);
     }
 }
