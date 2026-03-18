@@ -64,32 +64,32 @@ public class VehicleManager {
 
     public void turboOn() {
         for (Vehicle vehicle : vehicles) {
-            if (vehicle instanceof Saab95) {
-                ((Saab95) vehicle).setTurboOn();
+            if (vehicle instanceof Saab95 saab) {
+                saab.setTurboOn();
             }
         }
     }
 
     public void turboOff() {
         for (Vehicle vehicle : vehicles) {
-            if (vehicle instanceof Saab95) {
-                ((Saab95) vehicle).setTurboOff();
+            if (vehicle instanceof Saab95 saab) {
+                saab.setTurboOff();
             }
         }
     }
 
     public void liftBed() {
         for (Vehicle vehicle : vehicles) {
-            if (vehicle instanceof Scania) {
-                ((Scania) vehicle).raiseBed(70);
+            if (vehicle instanceof Scania scania) {
+                scania.raiseBed(70);
             }
         }
     }
 
     public void lowerBed() {
         for (Vehicle vehicle : vehicles) {
-            if (vehicle instanceof Scania) {
-                ((Scania) vehicle).lowerBed(70);
+            if (vehicle instanceof Scania scania) {
+                scania.lowerBed(70);
             }
         }
     }

@@ -48,8 +48,8 @@ public class WorkshopManager {
         List<Vehicle> toRemove = new ArrayList<>();
 
         for (Vehicle vehicle : vehicles) {
-            if (vehicle instanceof Car) {
-                boolean added = tryEnterWorkshop((Car) vehicle);
+            if (vehicle instanceof Car car) {
+                boolean added = tryEnterWorkshop(car);
 
                 if (added) {
                     toRemove.add(vehicle);
